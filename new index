@@ -1,0 +1,2027 @@
+<!DOCTYPE html>
+<!-- saved from url=(0238)file:///Users/andrecosta/Library/Application%20Support/Claude/local-agent-mode-sessions/de06431e-af7e-4d56-8840-3649fafdda03/cc5718ca-27a6-4d13-92ba-ed634bb29910/local_6743bdff-5d1e-48cd-ad01-27efb9a26822/outputs/apac-deals-dashboard.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>APAC Deals Won — #apac-deals2day</title>
+<script src="./APAC Deals Won — #apac-deals2day_files/chart.umd.js"></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: #f4f4f1;
+    color: #1a1a18;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  header {
+    background: #fff;
+    border-bottom: 0.5px solid #e0e0da;
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo {
+    font-size: 15px;
+    font-weight: 500;
+    color: #1a1a18;
+    letter-spacing: -0.01em;
+  }
+
+  .logo span {
+    color: #888;
+    font-weight: 400;
+    margin-left: 8px;
+  }
+
+  .tag {
+    font-size: 11px;
+    background: #e8f0fc;
+    color: #1a4b9c;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-weight: 500;
+  }
+
+  main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+  }
+
+  h1 {
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 4px;
+    letter-spacing: -0.02em;
+  }
+
+  .subtitle {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 1.75rem;
+  }
+
+  /* Stats */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 1.5rem;
+  }
+
+  .stat-card {
+    background: #fff;
+    border: 0.5px solid #e0e0da;
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+  }
+
+  .stat-card.amber { background: #fffbeb; border-color: #fcd34d; }
+  .stat-card.red   { background: #fff1f1; border-color: #fca5a5; }
+
+  .stat-label {
+    font-size: 11px;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    margin-bottom: 8px;
+  }
+
+  .stat-card.amber .stat-label { color: #92400e; }
+  .stat-card.red   .stat-label { color: #991b1b; }
+
+  .stat-value {
+    font-size: 44px;
+    font-weight: 500;
+    line-height: 1;
+    color: #1a1a18;
+  }
+
+  .stat-card.amber .stat-value { color: #92400e; }
+  .stat-card.red   .stat-value { color: #991b1b; }
+
+  /* Chart */
+  .chart-card {
+    background: #fff;
+    border: 0.5px solid #e0e0da;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .chart-title {
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 1.25rem;
+    color: #444;
+  }
+
+  .chart-wrap {
+    position: relative;
+    width: 100%;
+    height: 230px;
+  }
+
+  /* Filters */
+  .filters {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 1.25rem;
+  }
+
+  .filter-group label {
+    display: block;
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 6px;
+  }
+
+  select {
+    width: 100%;
+    appearance: none;
+    background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23888' d='M6 8L1 3h10z'/%3E%3C/svg%3E") no-repeat right 12px center;
+    border: 0.5px solid #d0d0ca;
+    border-radius: 8px;
+    padding: 9px 36px 9px 12px;
+    font-size: 14px;
+    color: #1a1a18;
+    cursor: pointer;
+    font-family: inherit;
+  }
+
+  select:hover { border-color: #aaa; }
+  select:focus { outline: none; border-color: #185FA5; box-shadow: 0 0 0 3px rgba(24,95,165,0.12); }
+
+  /* Count */
+  .count-row {
+    font-size: 13px;
+    color: #888;
+    margin-bottom: 12px;
+  }
+
+  /* Grid */
+  .grid {
+    display: grid;
+    grid-template-columns: minmax(0,1fr) minmax(0,1fr);
+    gap: 12px;
+  }
+
+  .deal-card {
+    background: #fff;
+    border: 0.5px solid #e0e0da;
+    border-radius: 12px;
+    padding: 1.1rem 1.25rem;
+  }
+
+  .deal-card:hover {
+    border-color: #c0c0ba;
+  }
+
+  .deal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 3px;
+  }
+
+  .deal-company {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.3;
+  }
+
+  .deal-vertical {
+    font-size: 11px;
+    color: #888;
+    margin-bottom: 10px;
+  }
+
+  .deal-amount {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    color: #1a1a18;
+  }
+
+  .deal-vp {
+    font-size: 12px;
+    color: #666;
+    line-height: 1.6;
+  }
+
+  /* Badges */
+  .badge {
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-weight: 500;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .badge-streem  { background: #fff1f1; color: #991b1b; }
+  .badge-isentia { background: #fffbeb; color: #92400e; }
+  .badge-new     { background: #f0fdf4; color: #166534; }
+  .badge-other   { background: #f4f4f1; color: #555; }
+
+  .empty {
+    color: #888;
+    font-size: 14px;
+    grid-column: 1 / -1;
+    padding: 2rem 0;
+    text-align: center;
+  }
+
+  footer {
+    text-align: center;
+    font-size: 12px;
+    color: #aaa;
+    padding: 2rem 1rem;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Meltwater <span>APAC</span></div>
+  <span class="tag">#apac-deals2day</span>
+</header>
+
+<main>
+  <h1>Deals won</h1>
+  <p class="subtitle">Live channel data — all deals closed and posted to #apac-deals2day</p>
+
+  <div class="stats" id="stats">
+    <div class="stat-card">
+      <p class="stat-label">Number of deals</p>
+      <p class="stat-value">159</p>
+    </div>
+    <div class="stat-card amber">
+      <p class="stat-label">Won from iSentia</p>
+      <p class="stat-value">20</p>
+    </div>
+    <div class="stat-card red">
+      <p class="stat-label">Won from Streem</p>
+      <p class="stat-value">36</p>
+    </div></div>
+
+  <div class="chart-card">
+    <p class="chart-title">Deals won by vertical</p>
+    <div class="chart-wrap">
+      <canvas id="chart" role="img" aria-label="Column chart of deals won by vertical." width="2006" height="460" style="display: block; box-sizing: border-box; height: 230px; width: 1003px;"></canvas>
+    </div>
+  </div>
+
+  <div class="filters">
+    <div class="filter-group">
+      <label>Industry</label>
+      <select id="selV" onchange="go()">
+        <option value="All">All industries</option>
+        <option value="Financial Services">Financial services</option>
+        <option value="Government &amp; Associations">Government &amp; associations</option>
+        <option value="NFP &amp; Charities">NFP &amp; charities</option>
+        <option value="Property &amp; Construction">Property &amp; construction</option>
+        <option value="Technology">Technology</option>
+        <option value="PR &amp; Agencies">PR &amp; agencies</option>
+        <option value="Legal">Legal</option>
+        <option value="Retail &amp; Consumer">Retail &amp; consumer</option>
+        <option value="Healthcare &amp; Pharma">Healthcare &amp; pharma</option>
+        <option value="Other">Other</option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <label>Competitor</label>
+      <select id="selC" onchange="go()">
+        <option value="All">All competitors</option>
+        <option value="Streem">Streem</option>
+        <option value="iSentia">iSentia</option>
+        <option value="New business">New business</option>
+        <option value="Other comp">Other / upsell</option>
+      </select>
+    </div>
+  </div>
+
+  <p class="count-row" id="cnt">159 deals — ordered by ACV</p>
+  <div class="grid" id="grid">
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Westpac</p>
+        <span class="badge badge-streem">Streem</span>
+      </div>
+      <p class="deal-vertical">Financial Services</p>
+      <p class="deal-amount">A$498,900</p>
+      <p class="deal-vp">Replaced Streem with Bloomberg-backed global coverage, smarter AI workspaces and GenAI intelligence after years of missed coverage and poor reporting.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Mitsubishi Electric HQ</p>
+        <span class="badge badge-other">Sprinklr &amp; Talkwalker</span>
+      </div>
+      <p class="deal-vertical">Technology</p>
+      <p class="deal-amount">US$133,000</p>
+      <p class="deal-vp">Beat Sprinklr and Talkwalker despite being most expensive — won on people, premium support and Microsoft partnership synergy.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">RACV</p>
+        <span class="badge badge-streem">Streem &amp; Brandwatch</span>
+      </div>
+      <p class="deal-vertical">Financial Services</p>
+      <p class="deal-amount">A$115,000</p>
+      <p class="deal-vp">Consolidated Streem, Brandwatch and MediaNet into one AI-powered platform with unified corporate and marketing reporting.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">77 Bank</p>
+        <span class="badge badge-other">E-Mining / Eltes</span>
+      </div>
+      <p class="deal-vertical">Financial Services</p>
+      <p class="deal-amount">A$92,000</p>
+      <p class="deal-vp">Beat local Japanese competitors with signal-from-noise monitoring for financial misinformation and reputational risk management.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">BMD Group</p>
+        <span class="badge badge-streem">Streem</span>
+      </div>
+      <p class="deal-vertical">Property &amp; Construction</p>
+      <p class="deal-amount">A$90,000</p>
+      <p class="deal-vp">Replaced Streem — just 9 months after switching from iSentia — with Mira-powered workflows across aviation, rail, construction, energy and defence.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Maurice Blackburn Lawyers</p>
+        <span class="badge badge-streem">Streem</span>
+      </div>
+      <p class="deal-vertical">Legal</p>
+      <p class="deal-amount">A$86,400</p>
+      <p class="deal-vp">Replaced Streem with AI-powered Mira and GAIL, delivering superior social listening, cleaner analytics and faster media intelligence for the whole firm.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">BBS Communications</p>
+        <span class="badge badge-isentia">iSentia</span>
+      </div>
+      <p class="deal-vertical">PR &amp; Agencies</p>
+      <p class="deal-amount">A$80,000</p>
+      <p class="deal-vp">Won back boomerang agency client from iSentia with superior ad-hoc search, own search term control and social listening iSentia had misrepresented.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Google Japan</p>
+        <span class="badge badge-new">New business</span>
+      </div>
+      <p class="deal-vertical">Technology</p>
+      <p class="deal-amount">US$78,000</p>
+      <p class="deal-vp">Won Google B2B Marketing on customisable SOV monitoring vs Meta, X, TikTok and LINE — bilingual managed services clinched it.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">IEEFA</p>
+        <span class="badge badge-other">Cision</span>
+      </div>
+      <p class="deal-vertical">NFP &amp; Charities</p>
+      <p class="deal-amount">A$72,000</p>
+      <p class="deal-vp">Replaced Cision after 3-year failed contract — won on Australian paywall access, superior global coverage and 'five gold star' AI.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">PC Agency</p>
+        <span class="badge badge-other">Cision &amp; Agility PR</span>
+      </div>
+      <p class="deal-vertical">PR &amp; Agencies</p>
+      <p class="deal-amount">A$72,000</p>
+      <p class="deal-vp">Turned small Aussie print brief into global luxury travel PR deal — midnight live demo to London CEO landed the global mandate.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">UniSuper</p>
+        <span class="badge badge-streem">Streem</span>
+      </div>
+      <p class="deal-vertical">Financial Services</p>
+      <p class="deal-amount">A$70,000</p>
+      <p class="deal-vp">Replaced Streem with unified dashboards across all media channels and AI sentiment analysis, eliminating hours of manual checking for the comms team.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Vicinity Centres</p>
+        <span class="badge badge-isentia">iSentia</span>
+      </div>
+      <p class="deal-vertical">Property &amp; Construction</p>
+      <p class="deal-amount">A$65,000</p>
+      <p class="deal-vp">Replaced iSentia with full social listening and AI-powered monitoring, giving the property company 360° media visibility their previous tool completely lacked.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">AMSA</p>
+        <span class="badge badge-streem">Streem &amp; iSentia</span>
+      </div>
+      <p class="deal-vertical">Government &amp; Associations</p>
+      <p class="deal-amount">A$61,500</p>
+      <p class="deal-vp">Government comeback deal after 4 years — blind demo with no discovery, ending with: 'I could spend hours in this beautiful platform.'</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Zoff (Japan)</p>
+        <span class="badge badge-new">New business</span>
+      </div>
+      <p class="deal-vertical">Retail &amp; Consumer</p>
+      <p class="deal-amount">A$60,000</p>
+      <p class="deal-vp">Delivered always-on competitive benchmarking and CX theme analysis for eyewear brand to systematically improve service quality against JINS and OWNDAYS.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Specialist Protection Group (NDA)</p>
+        <span class="badge badge-new">New business</span>
+      </div>
+      <p class="deal-vertical">Other</p>
+      <p class="deal-amount">A$60,000</p>
+      <p class="deal-vp">Built client-specific intelligence workflows with Microsoft Teams integration delivering real-time tailored media feeds per protected individual and asset.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">City of Mandurah</p>
+        <span class="badge badge-other">Brandwatch &amp; Hootsuite</span>
+      </div>
+      <p class="deal-vertical">Government &amp; Associations</p>
+      <p class="deal-amount">A$52,000</p>
+      <p class="deal-vp">Grew a $4k account to $52k ACV, navigating RFP and legal hurdles to consolidate Tourism, CS and Comms on one platform.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">IMB Bank</p>
+        <span class="badge badge-isentia">iSentia</span>
+      </div>
+      <p class="deal-vertical">Financial Services</p>
+      <p class="deal-amount">A$50,000</p>
+      <p class="deal-vp">Replaced iSentia with social listening, review site monitoring and AI capabilities, adding $15k in new value while navigating a complex AI policy approval process.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">MECCA</p>
+        <span class="badge badge-new">New business</span>
+      </div>
+      <p class="deal-vertical">Retail &amp; Consumer</p>
+      <p class="deal-amount">A$50,000</p>
+      <p class="deal-vp">Opened social listening for Australia's leading beauty retailer for the first time — enabling proactive brand risk management.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Fuji Pharma</p>
+        <span class="badge badge-new">New business</span>
+      </div>
+      <p class="deal-vertical">Healthcare &amp; Pharma</p>
+      <p class="deal-amount">A$48,000</p>
+      <p class="deal-vp">Delivered integrated media monitoring, newsletter distribution and Dow Jones integration for pharma comms team across print, digital and social.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Treasury Wine Estates (SEA)</p>
+        <span class="badge badge-other">Cision &amp; Truescope</span>
+      </div>
+      <p class="deal-vertical">Food &amp; Beverage</p>
+      <p class="deal-amount">A$46,000</p>
+      <p class="deal-vp">Won 10-market SEA solution beating Cision who offered 50% less — global coverage, AI roadmap and unified social/media sealed it.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">CTF Life</p>
+        <span class="badge badge-other">Local vendors</span>
+      </div>
+      <p class="deal-vertical">Financial Services</p>
+      <p class="deal-amount">A$44,000</p>
+      <p class="deal-vp">Replaced local HK vendors with a combined global and Chinese data platform for the MI team tracking social mentions and agent activity.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">MinterEllison</p>
+        <span class="badge badge-streem">Streem</span>
+      </div>
+      <p class="deal-vertical">Legal</p>
+      <p class="deal-amount">A$43,500</p>
+      <p class="deal-vp">6 years in the making — signed former employer for social media management, media monitoring, social listening, media relations and reporting.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">EY Australia</p>
+        <span class="badge badge-streem">Streem</span>
+      </div>
+      <p class="deal-vertical">Legal</p>
+      <p class="deal-amount">A$41,000</p>
+      <p class="deal-vp">Champion built relationship in shared office building — Mira and Copilot as perfect fit for Microsoft's largest global client sold the deal.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">ACCR</p>
+        <span class="badge badge-isentia">iSentia</span>
+      </div>
+      <p class="deal-vertical">NFP &amp; Charities</p>
+      <p class="deal-amount">A$40,500</p>
+      <p class="deal-vp">Won shareholder advocacy org from iSentia/Pulsar — unlimited ad-hoc search and global coverage for funder and donor reporting.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Australian Local Government Assoc</p>
+        <span class="badge badge-new">New business</span>
+      </div>
+      <p class="deal-vertical">Government &amp; Associations</p>
+      <p class="deal-amount">A$40,000</p>
+      <p class="deal-vp">Gave new comms director full media and broadcast visibility plus journalist database to quantify advocacy impact and lead policy conversations.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Kenvue</p>
+        <span class="badge badge-isentia">iSentia</span>
+      </div>
+      <p class="deal-vertical">Financial Services</p>
+      <p class="deal-amount">A$40,000</p>
+      <p class="deal-vp">Displaced iSentia for J&amp;J's consumer health spin-off with Mira AI, real-time APAC brand tracking and standardised global reporting.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">LeapFrogger</p>
+        <span class="badge badge-other">Sprout &amp; Tagger</span>
+      </div>
+      <p class="deal-vertical">Other</p>
+      <p class="deal-amount">A$40,000</p>
+      <p class="deal-vp">Beat Sprout and Tagger with Klear's Australian influencer discovery and all-in-one PEO reporting for Melbourne digital agency.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Zurich Insurance</p>
+        <span class="badge badge-streem">Streem</span>
+      </div>
+      <p class="deal-vertical">Financial Services</p>
+      <p class="deal-amount">A$39,500</p>
+      <p class="deal-vp">Replaced Streem with advanced social listening and AI analytics to monitor reputational scandal coverage and enable real-time crisis management.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Roll'd Vietnamese</p>
+        <span class="badge badge-new">New business</span>
+      </div>
+      <p class="deal-vertical">Food &amp; Beverage</p>
+      <p class="deal-amount">A$39,000</p>
+      <p class="deal-vp">Won 100-store chain on consolidated solution — founder chose Meltwater after in-person meeting proved relationship matters most.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">City of Wanneroo</p>
+        <span class="badge badge-other">iSentia &amp; Hootsuite</span>
+      </div>
+      <p class="deal-vertical">Government &amp; Associations</p>
+      <p class="deal-amount">A$36,900</p>
+      <p class="deal-vp">Replaced both iSentia and Hootsuite with all-in-one social listening, SMM and automated reporting after tender win.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Aqualand</p>
+        <span class="badge badge-isentia">iSentia</span>
+      </div>
+      <p class="deal-vertical">Property &amp; Construction</p>
+      <p class="deal-amount">A$35,000</p>
+      <p class="deal-vp">Grew iSentia client spend by $7k with AI boolean assistant and social noise monitoring for construction project complaints and community sentiment.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Melco Resorts</p>
+        <span class="badge badge-new">New business</span>
+      </div>
+      <p class="deal-vertical">Other</p>
+      <p class="deal-amount">A$34,000</p>
+      <p class="deal-vp">Enabled casino and resort group comms team to monitor brand and risk globally using an AI teammate for real-time intelligence across operations.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Corrs Chambers Westgarth</p>
+        <span class="badge badge-streem">Streem</span>
+      </div>
+      <p class="deal-vertical">Legal</p>
+      <p class="deal-amount">A$33,850</p>
+      <p class="deal-vp">Won on superior UX, global monitoring, LinkedIn and Reddit social listening, and better media relations vs Streem's limited newsletter and social capability.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">ANFF</p>
+        <span class="badge badge-new">New business</span>
+      </div>
+      <p class="deal-vertical">Other</p>
+      <p class="deal-amount">A$32,100</p>
+      <p class="deal-vp">Aggregated 20 research institutions under one Meltwater license, enabling consolidated media intelligence across Australia's national research network.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">GO (Japan Taxi)</p>
+        <span class="badge badge-other">Quid / Brandwatch / Talkwalker</span>
+      </div>
+      <p class="deal-vertical">Technology</p>
+      <p class="deal-amount">A$32,000</p>
+      <p class="deal-vp">Beat every major listening competitor to deliver continuous social monitoring of app user pain points and PR risk for Japan's leading ride-hailing platform.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Mattel APAC</p>
+        <span class="badge badge-new">New business</span>
+      </div>
+      <p class="deal-vertical">Retail &amp; Consumer</p>
+      <p class="deal-amount">A$32,000</p>
+      <p class="deal-vp">Won global toy giant on APAC trade publication coverage, supply chain monitoring and brand sentiment for Barbie and Hot Wheels.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">SRM Group (India)</p>
+        <span class="badge badge-new">New business</span>
+      </div>
+      <p class="deal-vertical">Government &amp; Associations</p>
+      <p class="deal-amount">US$31,100</p>
+      <p class="deal-vp">Delivered group-level governance and risk intelligence across 5 education campuses with news, social and LLM monitoring for a CXO-led mandate.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">York Park Group</p>
+        <span class="badge badge-streem">Streem</span>
+      </div>
+      <p class="deal-vertical">PR &amp; Agencies</p>
+      <p class="deal-amount">A$30,200</p>
+      <p class="deal-vp">Beat Streem with customisable dashboards and Mira Studio AI, positioning Meltwater as a digital media analyst within their consulting team.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">De Bortoli Wines</p>
+        <span class="badge badge-other">iSentia &amp; Later</span>
+      </div>
+      <p class="deal-vertical">Food &amp; Beverage</p>
+      <p class="deal-amount">A$30,150</p>
+      <p class="deal-vp">Replaced iSentia and Later with all-in-one social listening, monitoring, APAC social and Engage for wine exports.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Minter Ellison</p>
+        <span class="badge badge-streem">Streem</span>
+      </div>
+      <p class="deal-vertical">Legal</p>
+      <p class="deal-amount">A$30,000</p>
+      <p class="deal-vp">Expanded research team off Streem with unlimited searches and flexible ad-hoc monitoring, fully consolidating all firm teams on Meltwater.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Tencent</p>
+        <span class="badge badge-new">New business</span>
+      </div>
+      <p class="deal-vertical">Technology</p>
+      <p class="deal-amount">A$30,000</p>
+      <p class="deal-vp">Delivered AI-powered daily compliance intelligence on global news and policy for gaming team navigating AI and data privacy regulations.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Omnes Videntes (NZ)</p>
+        <span class="badge badge-streem">Streem</span>
+      </div>
+      <p class="deal-vertical">Other</p>
+      <p class="deal-amount">NZ$30,000</p>
+      <p class="deal-vp">Beat Streem with superior social listening and flexible platform for NZ security firm running real-time threat intelligence across client business operations.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Fairfield City Council</p>
+        <span class="badge badge-streem">Streem &amp; iSentia</span>
+      </div>
+      <p class="deal-vertical">Government &amp; Associations</p>
+      <p class="deal-amount">A$30,000</p>
+      <p class="deal-vp">Armed council with Meltwater's RFQ requirements, defeating Streem, iSentia and Hootsuite — team: 'I froth this tool, it's sick.'</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Holmesglen TAFE</p>
+        <span class="badge badge-streem">Streem &amp; Hootsuite</span>
+      </div>
+      <p class="deal-vertical">Government &amp; Associations</p>
+      <p class="deal-amount">A$30,000</p>
+      <p class="deal-vp">Generated a live report during demo that Comms Manager had just failed to do in Streem — 6 months of hand-holding rewarded.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">CyberCX</p>
+        <span class="badge badge-streem">Streem</span>
+      </div>
+      <p class="deal-vertical">Technology</p>
+      <p class="deal-amount">A$30,000</p>
+      <p class="deal-vp">Beat Streem's Australia-only broadcast with global coverage and accurate media counting vs Streem's inflated segment counts.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Worley</p>
+        <span class="badge badge-other">Upsell</span>
+      </div>
+      <p class="deal-vertical">Other</p>
+      <p class="deal-amount">A$30,000</p>
+      <p class="deal-vp">Custom Reporting and Media Relations upsell — Media Impact methodology proved PR ROI to ELT beyond net sentiment.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">TDCX</p>
+        <span class="badge badge-other">Brandwatch</span>
+      </div>
+      <p class="deal-vertical">PR &amp; Agencies</p>
+      <p class="deal-amount">US$29,500</p>
+      <p class="deal-vp">Beat Brandwatch for Singapore digital agency with full social listening, Engage and MR — local support was decisive.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Climate 200</p>
+        <span class="badge badge-streem">Streem</span>
+      </div>
+      <p class="deal-vertical">NFP &amp; Charities</p>
+      <p class="deal-amount">A$29,000</p>
+      <p class="deal-vp">Converted a long-time Streem customer with flexible reporting and Mira AI — users and decision-makers had very different decision criteria.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Intowork Australia</p>
+        <span class="badge badge-other">Brandwatch</span>
+      </div>
+      <p class="deal-vertical">NFP &amp; Charities</p>
+      <p class="deal-amount">A$29,000</p>
+      <p class="deal-vp">Beat Brandwatch in pure Engage deal — 20 users consolidated across Comms and Marketing with single source of truth.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">GenTech Seeds</p>
+        <span class="badge badge-streem">Streem &amp; Brand24</span>
+      </div>
+      <p class="deal-vertical">Retail &amp; Consumer</p>
+      <p class="deal-amount">A$28,000</p>
+      <p class="deal-vp">Beat Streem and Brand24 for ag brand needing unified ANZ social listening — Engage onboarding planned for next year.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Quintype</p>
+        <span class="badge badge-other">Talkwalker</span>
+      </div>
+      <p class="deal-vertical">Technology</p>
+      <p class="deal-amount">US$27,500</p>
+      <p class="deal-vp">Beat Talkwalker for digital publishing platform — spontaneous 10-minute upsell during closing call jumped deal value by $5k.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Cue Clothing Co</p>
+        <span class="badge badge-other">Sprout, Later &amp; Grin</span>
+      </div>
+      <p class="deal-vertical">Retail &amp; Consumer</p>
+      <p class="deal-amount">A$27,500</p>
+      <p class="deal-vp">Won restructuring fashion brand with SL, Engage and Klear package — targeting younger demographic through all-in-one martech.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Centre for Invasive Species Solutions</p>
+        <span class="badge badge-isentia">iSentia</span>
+      </div>
+      <p class="deal-vertical">NFP &amp; Charities</p>
+      <p class="deal-amount">A$27,000</p>
+      <p class="deal-vp">Replaced iSentia with AI-powered monitoring enabling automated media wrap-ups, deep wildlife community social listening and major team efficiency gains.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">JisuLife</p>
+        <span class="badge badge-other">Talkwalker / Brandwatch</span>
+      </div>
+      <p class="deal-vertical">Technology</p>
+      <p class="deal-amount">A$25,000</p>
+      <p class="deal-vp">Beat Talkwalker and Brandwatch with targeted social listening for marketing transformation and product feedback across China and global expansion markets.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Poem Group</p>
+        <span class="badge badge-other">Hype Auditor</span>
+      </div>
+      <p class="deal-vertical">PR &amp; Agencies</p>
+      <p class="deal-amount">A$25,000</p>
+      <p class="deal-vp">Beat Hype Auditor for agency with F1 partnerships — predictive ROI, suggested influencer costs and AI discovery closed the deal.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Nsight Consulting</p>
+        <span class="badge badge-other">Upsell</span>
+      </div>
+      <p class="deal-vertical">Technology</p>
+      <p class="deal-amount">A$25,000</p>
+      <p class="deal-vp">API upsell for consulting firm exporting 52M data points to government clients — finding the gap and right package quickly.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Firstmac</p>
+        <span class="badge badge-isentia">iSentia</span>
+      </div>
+      <p class="deal-vertical">Financial Services</p>
+      <p class="deal-amount">A$24,000</p>
+      <p class="deal-vp">Won a motivated champion who signed a 14-month deal immediately, switching from iSentia on superior platform capability and account management.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Reymond Communications</p>
+        <span class="badge badge-streem">Streem</span>
+      </div>
+      <p class="deal-vertical">PR &amp; Agencies</p>
+      <p class="deal-amount">A$24,000</p>
+      <p class="deal-vp">Won back boomerang agency — left in 2022, tried iSentia then Streem, returning home on reporting and international mentions.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Birdon Group</p>
+        <span class="badge badge-other">Cision</span>
+      </div>
+      <p class="deal-vertical">Healthcare &amp; Pharma</p>
+      <p class="deal-amount">A$24,000</p>
+      <p class="deal-vp">Beat Cision on Australian paywall, Mira AI, broadcast and local AM — a cold call that uncovered every one of Cision's weaknesses.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">NSW Teachers Federation</p>
+        <span class="badge badge-other">Upsell</span>
+      </div>
+      <p class="deal-vertical">Other</p>
+      <p class="deal-amount">A$24,000</p>
+      <p class="deal-vp">Pulled forward contract $64k→$88k with Engage and API — champion persisted through landline-only contact and two departed champions.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Meli</p>
+        <span class="badge badge-new">New business</span>
+      </div>
+      <p class="deal-vertical">NFP &amp; Charities</p>
+      <p class="deal-amount">A$23,000</p>
+      <p class="deal-vp">Automated manual media admin for Bellarine Peninsula NFP, freeing time for proactive content strategy and journalist outreach.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Europ Assistance Australia</p>
+        <span class="badge badge-new">New business</span>
+      </div>
+      <p class="deal-vertical">Financial Services</p>
+      <p class="deal-amount">A$22,600</p>
+      <p class="deal-vp">Enabled real-time monitoring of travel insurance sentiment during Middle East conflict disruptions to protect brand and grow media presence.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">M+J Builders (NDA)</p>
+        <span class="badge badge-new">New business</span>
+      </div>
+      <p class="deal-vertical">Property &amp; Construction</p>
+      <p class="deal-amount">A$22,500</p>
+      <p class="deal-vp">Won non-traditional legal intelligence use case, deploying Meltwater as an evidence repository to archive media and social content for potential court proceedings.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">RØDE Microphones</p>
+        <span class="badge badge-new">New business</span>
+      </div>
+      <p class="deal-vertical">Technology</p>
+      <p class="deal-amount">A$22,000</p>
+      <p class="deal-vp">Replaced expensive PR agencies with in-house Mira Studio monitoring for brand tracking, media release distribution and competitor benchmarking.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">6am Agency</p>
+        <span class="badge badge-isentia">iSentia</span>
+      </div>
+      <p class="deal-vertical">PR &amp; Agencies</p>
+      <p class="deal-amount">A$22,000</p>
+      <p class="deal-vp">Finally won healthcare agency long auto-renewed by iSentia — switching for reporting flexibility and international coverage.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Coles</p>
+        <span class="badge badge-other">Brandwatch &amp; Sprinklr</span>
+      </div>
+      <p class="deal-vertical">Retail &amp; Consumer</p>
+      <p class="deal-amount">A$22,000</p>
+      <p class="deal-vp">Re-won Coles for Klear with tailored Australian influencer discovery — turned junior contact challenge into DM close.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Zeekr Australia</p>
+        <span class="badge badge-isentia">iSentia</span>
+      </div>
+      <p class="deal-vertical">Other</p>
+      <p class="deal-amount">A$21,750</p>
+      <p class="deal-vp">Won Chinese EV brand from iSentia with standardised APAC reporting, brand SOV dashboards and strong agency relationship support.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Neurizon Therapeutics</p>
+        <span class="badge badge-new">New business</span>
+      </div>
+      <p class="deal-vertical">Healthcare &amp; Pharma</p>
+      <p class="deal-amount">A$21,500</p>
+      <p class="deal-vp">Replaced Quarterback with global coverage, benchmarking and newsletter — Analyze dashboard wowed both champion and boss in same meeting.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Syngenta Australia</p>
+        <span class="badge badge-streem">Streem</span>
+      </div>
+      <p class="deal-vertical">Other</p>
+      <p class="deal-amount">A$21,000</p>
+      <p class="deal-vp">Replaced Streem's inflexible search management with user-controlled ad-hoc searching and a streamlined newsletter workflow for the agri communications team.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">ASFA</p>
+        <span class="badge badge-streem">Streem</span>
+      </div>
+      <p class="deal-vertical">Financial Services</p>
+      <p class="deal-amount">A$21,000</p>
+      <p class="deal-vp">Replaced Streem with Bloomberg partnership, social echo and full platform flexibility — their words: 'clearly the superior tool.'</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Crime Stoppers Victoria</p>
+        <span class="badge badge-isentia">iSentia</span>
+      </div>
+      <p class="deal-vertical">Government &amp; Associations</p>
+      <p class="deal-amount">A$21,000</p>
+      <p class="deal-vp">Replaced iSentia's missed early/late broadcast with searchable transcripts — content comparison on AFL clinched the deal.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Anglicare WA</p>
+        <span class="badge badge-other">MyMedia</span>
+      </div>
+      <p class="deal-vertical">NFP &amp; Charities</p>
+      <p class="deal-amount">A$21,000</p>
+      <p class="deal-vp">Replaced MyMedia with print, broadcast and social monitoring — signed quickly on ad-hoc searching, social echo and automated reports.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Anglicare WA Engage</p>
+        <span class="badge badge-other">Upsell</span>
+      </div>
+      <p class="deal-vertical">NFP &amp; Charities</p>
+      <p class="deal-amount">A$20,800</p>
+      <p class="deal-vp">Engage and Insights Reports cross-sell to WA social services org — saves a full day per month on report generation.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Komatsu Ltd.</p>
+        <span class="badge badge-new">New business</span>
+      </div>
+      <p class="deal-vertical">Technology</p>
+      <p class="deal-amount">US$20,500</p>
+      <p class="deal-vp">Won Japanese conglomerate global brand team on reporting automation — deal closed in the final minutes of the quarter.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Northern Grampians Shire Council</p>
+        <span class="badge badge-new">New business</span>
+      </div>
+      <p class="deal-vertical">Government &amp; Associations</p>
+      <p class="deal-amount">A$20,000</p>
+      <p class="deal-vp">Replaced manual Google Alerts with automated community sentiment monitoring and real-time alerts for renewables and essential services issues.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Mental Health First Aid</p>
+        <span class="badge badge-streem">Streem + Sprout</span>
+      </div>
+      <p class="deal-vertical">NFP &amp; Charities</p>
+      <p class="deal-amount">A$20,000</p>
+      <p class="deal-vp">Consolidated Streem and Sprout into a single platform with international coverage and unified reporting to better showcase advocacy wins.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Human Made (Japan)</p>
+        <span class="badge badge-new">New business</span>
+      </div>
+      <p class="deal-vertical">Retail &amp; Consumer</p>
+      <p class="deal-amount">A$20,000</p>
+      <p class="deal-vp">Won CX team post-Tokyo Stock Exchange listing with brand mention monitoring to manage reseller complaints and customer experience issues at scale.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Mounties Group</p>
+        <span class="badge badge-other">Upsell</span>
+      </div>
+      <p class="deal-vertical">Other</p>
+      <p class="deal-amount">A$20,000</p>
+      <p class="deal-vp">Long-standing customer expanded with Social Advertising and Print monitoring — Reddit and ANZAC Day coverage unlocked unseen value.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Murray Regional Tourism Board</p>
+        <span class="badge badge-new">New business</span>
+      </div>
+      <p class="deal-vertical">Government &amp; Associations</p>
+      <p class="deal-amount">A$19,999</p>
+      <p class="deal-vp">Enabled tourism board to deliver individualised media dashboards across 13 Murray River councils to secure continued government funding.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">State School Teachers Union WA</p>
+        <span class="badge badge-streem">Streem</span>
+      </div>
+      <p class="deal-vertical">Government &amp; Associations</p>
+      <p class="deal-amount">A$19,900</p>
+      <p class="deal-vp">Cold-call-turned-champion deal off Streem — same-day Engage demo and tipped value won the DM who now emails multiple times daily.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">FMH Group</p>
+        <span class="badge badge-new">New business</span>
+      </div>
+      <p class="deal-vertical">Other</p>
+      <p class="deal-amount">A$19,900</p>
+      <p class="deal-vp">Won logistics group after broadcast media storm from truck incident — proactive crisis monitoring for Couriers Please and Border Express.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Three6</p>
+        <span class="badge badge-other">Brandwatch</span>
+      </div>
+      <p class="deal-vertical">PR &amp; Agencies</p>
+      <p class="deal-amount">A$19,600</p>
+      <p class="deal-vp">Beat Brandwatch with ad-hoc searching ease and Mira AI — replacing costly human focus groups for market research firm.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">DFES WA</p>
+        <span class="badge badge-new">New business</span>
+      </div>
+      <p class="deal-vertical">Government &amp; Associations</p>
+      <p class="deal-amount">A$19,500</p>
+      <p class="deal-vp">Selected for emergency crisis monitoring, rapid WA media coverage and Teams integration to coordinate emergency response comms.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">PB Communications</p>
+        <span class="badge badge-streem">Streem</span>
+      </div>
+      <p class="deal-vertical">PR &amp; Agencies</p>
+      <p class="deal-amount">A$19,500</p>
+      <p class="deal-vp">Moved strategic comms consultancy off Streem with smarter AI alerts and reporting for PR campaign tracking.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Kordamentha</p>
+        <span class="badge badge-other">Upsell</span>
+      </div>
+      <p class="deal-vertical">Financial Services</p>
+      <p class="deal-amount">A$19,000</p>
+      <p class="deal-vp">Expanded analyst access via Microsoft Connector for rapid client reporting and competitive industry intelligence across the consulting team.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">M3Company</p>
+        <span class="badge badge-new">New business</span>
+      </div>
+      <p class="deal-vertical">Technology</p>
+      <p class="deal-amount">A$19,000</p>
+      <p class="deal-vp">Inbound win for Japanese healthcare content company — social listening replacing fully manual data collection for PR content planning.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Triple P Parenting</p>
+        <span class="badge badge-streem">Streem &amp; Medianet</span>
+      </div>
+      <p class="deal-vertical">NFP &amp; Charities</p>
+      <p class="deal-amount">A$18,500</p>
+      <p class="deal-vp">Won back former Meltwater customer who had tried iSentia then Streem — returned on missed clips and poor account management.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">DPIRD WA</p>
+        <span class="badge badge-other">Existing provider</span>
+      </div>
+      <p class="deal-vertical">Government &amp; Associations</p>
+      <p class="deal-amount">A$18,000</p>
+      <p class="deal-vp">Switched WA government department to Meltwater with automated newsletters and a competitor matrix that helped the champion justify the procurement decision.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Veracio</p>
+        <span class="badge badge-new">New business</span>
+      </div>
+      <p class="deal-vertical">Technology</p>
+      <p class="deal-amount">A$18,000</p>
+      <p class="deal-vp">Signed within 24 hours by delivering consolidated global media visibility and QoQ ROI reporting to prove PR investment to leadership.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">XO Sports</p>
+        <span class="badge badge-other">Hypetap</span>
+      </div>
+      <p class="deal-vertical">Other</p>
+      <p class="deal-amount">A$18,000</p>
+      <p class="deal-vp">Beat Hypetap with in-person consultative demo, positioning Klear as the only viable ad channel for pre-revenue sports brand restricted from paid social.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Prospa</p>
+        <span class="badge badge-other">Sprinklr</span>
+      </div>
+      <p class="deal-vertical">Financial Services</p>
+      <p class="deal-amount">A$18,000</p>
+      <p class="deal-vp">Replaced Sprinklr's complex enterprise setup with Engage's intuitive platform — unified Marketing and Customer Service teams.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Greater Hume Council</p>
+        <span class="badge badge-new">New business</span>
+      </div>
+      <p class="deal-vertical">Government &amp; Associations</p>
+      <p class="deal-amount">A$18,000</p>
+      <p class="deal-vp">Signed after first demo without considering competitors — replacing zero oversight and Google Alerts with 24/7 community monitoring.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Stockyard Beef</p>
+        <span class="badge badge-new">New business</span>
+      </div>
+      <p class="deal-vertical">Food &amp; Beverage</p>
+      <p class="deal-amount">A$18,000</p>
+      <p class="deal-vp">Won beef exporter monitoring Dubai restaurant mentions and boosting local social presence — sparked by tariff conversations.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Brisbane North PHN</p>
+        <span class="badge badge-streem">Streem</span>
+      </div>
+      <p class="deal-vertical">Healthcare &amp; Pharma</p>
+      <p class="deal-amount">A$18,000</p>
+      <p class="deal-vp">Won back 8-year former customer from Streem — live demo found content Streem had missed hours after it was published.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Tourism Whitsundays</p>
+        <span class="badge badge-streem">Streem &amp; Sprout</span>
+      </div>
+      <p class="deal-vertical">Other</p>
+      <p class="deal-amount">A$18,000</p>
+      <p class="deal-vp">Replaced Streem and Sprout with consolidated platform — saving time and delivering sentiment analysis for key destinations.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">NZ Thoroughbred Racing</p>
+        <span class="badge badge-other">Fuseworks &amp; iSentia</span>
+      </div>
+      <p class="deal-vertical">Other</p>
+      <p class="deal-amount">NZ$17,900</p>
+      <p class="deal-vp">Replaced Fuseworks, Later and iSentia with all-in-one platform — total spend rose from NZD$8k to $17.9k.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Legrand</p>
+        <span class="badge badge-new">New business</span>
+      </div>
+      <p class="deal-vertical">Technology</p>
+      <p class="deal-amount">A$17,500</p>
+      <p class="deal-vp">Enabled new Director of Communications to build PR strategy with journalist discovery, earned media tracking and competitive share of voice monitoring.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">BSP Financial</p>
+        <span class="badge badge-new">New business</span>
+      </div>
+      <p class="deal-vertical">Financial Services</p>
+      <p class="deal-amount">A$17,000</p>
+      <p class="deal-vp">Won PNG's largest bank on unmatched South Pacific media coverage for brand monitoring and regional industry news tracking.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Bathurst Regional Council</p>
+        <span class="badge badge-isentia">iSentia</span>
+      </div>
+      <p class="deal-vertical">Government &amp; Associations</p>
+      <p class="deal-amount">A$17,000</p>
+      <p class="deal-vp">Won back boomerang council from iSentia with improved regional coverage — 'Meltwater has changed so much over the last 2 years.'</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Bread Agency</p>
+        <span class="badge badge-other">Grin &amp; Fabulate</span>
+      </div>
+      <p class="deal-vertical">PR &amp; Agencies</p>
+      <p class="deal-amount">A$17,000</p>
+      <p class="deal-vp">Beat Grin and Fabulate with Klear's discovery strengths — DM had used Klear at Red Havas and confirmed it was better suited.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Catholic Schools Parramatta Diocese</p>
+        <span class="badge badge-new">New business</span>
+      </div>
+      <p class="deal-vertical">Government &amp; Associations</p>
+      <p class="deal-amount">A$16,500</p>
+      <p class="deal-vp">Replaced manual media clipping with precise geographic content filtering and broadcast monitoring for proactive school crisis management.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Jack Taylor Australia</p>
+        <span class="badge badge-new">New business</span>
+      </div>
+      <p class="deal-vertical">Technology</p>
+      <p class="deal-amount">A$16,500</p>
+      <p class="deal-vp">Won by building GM relationship over lunch — team was literally buying magazines and scanning manually before Meltwater.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Ario</p>
+        <span class="badge badge-isentia">iSentia</span>
+      </div>
+      <p class="deal-vertical">Other</p>
+      <p class="deal-amount">A$16,500</p>
+      <p class="deal-vp">Won scooter brand from iSentia — Slack integration removal was deal-breaker for iSentia, overseas market sentiment monitoring sealed it.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Preface Social Media</p>
+        <span class="badge badge-other">Pulsar &amp; iSentia</span>
+      </div>
+      <p class="deal-vertical">PR &amp; Agencies</p>
+      <p class="deal-amount">A$16,320</p>
+      <p class="deal-vp">Won back previous Meltwater customer from Pulsar and iSentia — global media access, AI Mira and all-in-one streaming.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Nxtquantum</p>
+        <span class="badge badge-new">New business</span>
+      </div>
+      <p class="deal-vertical">Technology</p>
+      <p class="deal-amount">US$16,300</p>
+      <p class="deal-vp">Closed smartphone maker on the spot after sharp Klear demo — founder: 'when the value is clear and the pitch is sharp, deals move fast.'</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Finder.com</p>
+        <span class="badge badge-isentia">iSentia</span>
+      </div>
+      <p class="deal-vertical">Financial Services</p>
+      <p class="deal-amount">A$16,000</p>
+      <p class="deal-vp">Consolidated comms, growth and marketing teams with 360° media visibility and native Slack/API integrations after 15 years with iSentia.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Westgold Resources</p>
+        <span class="badge badge-new">New business</span>
+      </div>
+      <p class="deal-vertical">Financial Services</p>
+      <p class="deal-amount">A$16,000</p>
+      <p class="deal-vp">Mining company's new Comm &amp; IR Director chose Meltwater for 24/7 crisis monitoring and Teams-integrated real-time alerts.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Breast Cancer Network Australia</p>
+        <span class="badge badge-isentia">iSentia</span>
+      </div>
+      <p class="deal-vertical">NFP &amp; Charities</p>
+      <p class="deal-amount">A$15,500</p>
+      <p class="deal-vp">Converted a staunch iSentia loyalist with superior broadcast transcription and an in-person demo that showcased the full platform capability.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Trilogy Hotels</p>
+        <span class="badge badge-streem">Streem</span>
+      </div>
+      <p class="deal-vertical">Other</p>
+      <p class="deal-amount">A$15,500</p>
+      <p class="deal-vp">Won hotel management startup from Streem with comprehensive monitoring for social sentiment and hotel brand crisis management.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Say So NZ</p>
+        <span class="badge badge-isentia">iSentia</span>
+      </div>
+      <p class="deal-vertical">PR &amp; Agencies</p>
+      <p class="deal-amount">A$15,010</p>
+      <p class="deal-vp">Beat iSentia on competitive NZ print coverage plus superior social and platform capabilities for a fast-moving 4-person agency.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Nan Fung Group</p>
+        <span class="badge badge-new">New business</span>
+      </div>
+      <p class="deal-vertical">Financial Services</p>
+      <p class="deal-amount">A$15,000</p>
+      <p class="deal-vp">Signed within 24 hours after demo surfaced critical fire incident content, proving the platform's real-time risk intelligence value.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Queensland Trucking Association</p>
+        <span class="badge badge-new">New business</span>
+      </div>
+      <p class="deal-vertical">Government &amp; Associations</p>
+      <p class="deal-amount">A$15,000</p>
+      <p class="deal-vp">Shifted from reactive to proactive media monitoring to elevate industry advocacy voice and prove impact to sponsors and members.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Motor Trade Association QLD</p>
+        <span class="badge badge-isentia">iSentia</span>
+      </div>
+      <p class="deal-vertical">Government &amp; Associations</p>
+      <p class="deal-amount">A$15,000</p>
+      <p class="deal-vp">Beat iSentia with social coverage, better regional monitoring and journalist database — closed by outpacing iSentia's notoriously slow response times.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Vision Super</p>
+        <span class="badge badge-new">New business</span>
+      </div>
+      <p class="deal-vertical">Financial Services</p>
+      <p class="deal-amount">A$15,000</p>
+      <p class="deal-vp">Re-engaged returning customer post-merger to track industry conversations and expand journalist outreach across new regions.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Greater Shepparton City Council</p>
+        <span class="badge badge-new">New business</span>
+      </div>
+      <p class="deal-vertical">Government &amp; Associations</p>
+      <p class="deal-amount">A$15,000</p>
+      <p class="deal-vp">Turned a budget-knocked-back council into a signed deal by offering an exec demo — CEO and councillor spike alerts now live.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Committee for Perth</p>
+        <span class="badge badge-other">MyMedia</span>
+      </div>
+      <p class="deal-vertical">NFP &amp; Charities</p>
+      <p class="deal-amount">A$15,000</p>
+      <p class="deal-vp">Replaced MyMedia with social listening, social echo and scheduled reports for Perth's leading advocacy think tank.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Superloop</p>
+        <span class="badge badge-streem">Streem</span>
+      </div>
+      <p class="deal-vertical">Technology</p>
+      <p class="deal-amount">A$15,000</p>
+      <p class="deal-vp">Replaced Streem's missed clips with AI daily media summaries, spike analysis and sentiment-aware CEO reports.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Jehovah's Witnesses Australia</p>
+        <span class="badge badge-streem">Streem</span>
+      </div>
+      <p class="deal-vertical">Government &amp; Associations</p>
+      <p class="deal-amount">A$14,600</p>
+      <p class="deal-vp">Converted 3-year Streem customer with Media Relations search, superior international and Pacific coverage, and better sourcebase.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Dec PR</p>
+        <span class="badge badge-other">Upsell</span>
+      </div>
+      <p class="deal-vertical">PR &amp; Agencies</p>
+      <p class="deal-amount">A$14,500</p>
+      <p class="deal-vp">Upsold GAIL Pro as clients increasingly demand LLM monitoring, making Meltwater the consolidated AI intelligence platform for the agency.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Shemaroo Entertainment</p>
+        <span class="badge badge-new">New business</span>
+      </div>
+      <p class="deal-vertical">Technology</p>
+      <p class="deal-amount">US$14,400</p>
+      <p class="deal-vp">After 1.5 years and 6 internal teams, became media partner for OTT content, music rights and 30+ brand handle management.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Western NSW Public Health Network</p>
+        <span class="badge badge-streem">Streem</span>
+      </div>
+      <p class="deal-vertical">Government &amp; Associations</p>
+      <p class="deal-amount">A$14,000</p>
+      <p class="deal-vp">Replaced Streem with flexible ad-hoc search and superior broadcast monitoring for government health team managing regional communications.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">HyFun Foods</p>
+        <span class="badge badge-new">New business</span>
+      </div>
+      <p class="deal-vertical">Food &amp; Beverage</p>
+      <p class="deal-amount">US$14,000</p>
+      <p class="deal-vp">Won frozen foods exporter through returning champion trust — global brand surveillance across 60+ markets and influencer discovery.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Innova Market Insights</p>
+        <span class="badge badge-other">Upsell</span>
+      </div>
+      <p class="deal-vertical">Food &amp; Beverage</p>
+      <p class="deal-amount">A$14,000</p>
+      <p class="deal-vp">Upsold Mira Studio and user seats to F&amp;B research firm creating client dashboards on trending flavours and regional markets.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">ABSEC</p>
+        <span class="badge badge-streem">Streem &amp; iSentia</span>
+      </div>
+      <p class="deal-vertical">Financial Services</p>
+      <p class="deal-amount">A$13,000</p>
+      <p class="deal-vp">Beat Streem and iSentia with broader social listening and flexible reporting in a fully competitive new process.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Frontier Services</p>
+        <span class="badge badge-new">New business</span>
+      </div>
+      <p class="deal-vertical">NFP &amp; Charities</p>
+      <p class="deal-amount">A$13,000</p>
+      <p class="deal-vp">Set up NFP supporting remote Australians with monitoring ahead of new marketing campaign — 'real-world tech doing good.'</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Miraggio</p>
+        <span class="badge badge-new">New business</span>
+      </div>
+      <p class="deal-vertical">Retail &amp; Consumer</p>
+      <p class="deal-amount">US$12,800</p>
+      <p class="deal-vp">Won fashion brand after 5-month Reddit outreach — re-engaged with tailored digest after deal went cold, closed full package.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Dylan Alcott Foundation</p>
+        <span class="badge badge-new">New business</span>
+      </div>
+      <p class="deal-vertical">NFP &amp; Charities</p>
+      <p class="deal-amount">A$12,500</p>
+      <p class="deal-vp">Enabled foundation to quantify media value for corporate partners and track community sentiment ahead of major festival return.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Khetika</p>
+        <span class="badge badge-new">New business</span>
+      </div>
+      <p class="deal-vertical">Retail &amp; Consumer</p>
+      <p class="deal-amount">US$12,500</p>
+      <p class="deal-vp">Won D2C consumer goods SMB with Explore, Engage and Klear through persistence over long negotiations and tight budget.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Forty Winks</p>
+        <span class="badge badge-other">Upsell</span>
+      </div>
+      <p class="deal-vertical">Retail &amp; Consumer</p>
+      <p class="deal-amount">A$12,000</p>
+      <p class="deal-vp">Added Klear to enable luxury mattress retailer to discover HNI influencers and streamline campaign briefing via AI-powered landing pages.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Wella</p>
+        <span class="badge badge-new">New business</span>
+      </div>
+      <p class="deal-vertical">Retail &amp; Consumer</p>
+      <p class="deal-amount">A$12,000</p>
+      <p class="deal-vp">Enabled beauty brand to rapidly monitor product safety allegations on social media through a trusted champion referral from a previous customer.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">BEING Mental Health</p>
+        <span class="badge badge-streem">Streem &amp; Medianet</span>
+      </div>
+      <p class="deal-vertical">NFP &amp; Charities</p>
+      <p class="deal-amount">A$12,000</p>
+      <p class="deal-vp">Won multi-vendor competitive process — all-in-one monitoring and social listening now automates a full day of weekly newsletter work.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Fred Hollows Foundation NZ</p>
+        <span class="badge badge-isentia">iSentia</span>
+      </div>
+      <p class="deal-vertical">NFP &amp; Charities</p>
+      <p class="deal-amount">NZ$12,000</p>
+      <p class="deal-vp">Doubled spend by converting iSentia MR client to full monitoring and relations — transparency on EULA built winning trust.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">RSL Lifecare</p>
+        <span class="badge badge-other">Upsell</span>
+      </div>
+      <p class="deal-vertical">NFP &amp; Charities</p>
+      <p class="deal-amount">A$11,000</p>
+      <p class="deal-vp">Upsold additional users and Engage profiles to RSL aged care after EBR uncovered growing subsidiary clubs.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Australian Physiotherapy Association</p>
+        <span class="badge badge-streem">Brandwatch + Streem</span>
+      </div>
+      <p class="deal-vertical">Healthcare &amp; Pharma</p>
+      <p class="deal-amount">A$10,960</p>
+      <p class="deal-vp">Beat a Brandwatch and Streem bundle with Klear AI search for influencer marketing and advanced social listening in one consolidated platform.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Chris O'Brien Lifehouse</p>
+        <span class="badge badge-isentia">iSentia</span>
+      </div>
+      <p class="deal-vertical">NFP &amp; Charities</p>
+      <p class="deal-amount">A$10,500</p>
+      <p class="deal-vp">Replaced iSentia for leading cancer centre with automated reporting and newsletter — signed within days of demo.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Arvind Mafatlal Group</p>
+        <span class="badge badge-new">New business</span>
+      </div>
+      <p class="deal-vertical">Retail &amp; Consumer</p>
+      <p class="deal-amount">US$10,200</p>
+      <p class="deal-vp">Won Indian textile conglomerate through ex-user referral — champion championed Meltwater on her way out.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Hyde &amp; Seek</p>
+        <span class="badge badge-new">New business</span>
+      </div>
+      <p class="deal-vertical">PR &amp; Agencies</p>
+      <p class="deal-amount">A$10,000</p>
+      <p class="deal-vp">Helped lean agency eliminate manual media reporting with AI-powered monitoring, freeing hours that can be reinvested into winning new business.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Allume Energy</p>
+        <span class="badge badge-new">New business</span>
+      </div>
+      <p class="deal-vertical">Other</p>
+      <p class="deal-amount">A$10,000</p>
+      <p class="deal-vp">Gave solar startup targeted journalist discovery and launch coverage reporting to prove PR impact and build media relations.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">LGBTIQ+ Health Australia</p>
+        <span class="badge badge-new">New business</span>
+      </div>
+      <p class="deal-vertical">NFP &amp; Charities</p>
+      <p class="deal-amount">A$10,000</p>
+      <p class="deal-vp">Helped advocacy group bring media monitoring in-house for spike alerts, journalist database and board-ready crisis reporting.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">People With Disability Australia</p>
+        <span class="badge badge-streem">Streem &amp; iSentia</span>
+      </div>
+      <p class="deal-vertical">NFP &amp; Charities</p>
+      <p class="deal-amount">A$10,000</p>
+      <p class="deal-vp">Replaced Streem and iSentia with custom dashboards, AI search assistant and social spokesperson tracking for disability advocacy.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Table Tennis Australia</p>
+        <span class="badge badge-new">New business</span>
+      </div>
+      <p class="deal-vertical">NFP &amp; Charities</p>
+      <p class="deal-amount">A$10,000</p>
+      <p class="deal-vp">Enabled growing sports federation to track athletes, international coverage and grow brand with journalist database.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Closer Communications</p>
+        <span class="badge badge-other">Sprout &amp; iSentia</span>
+      </div>
+      <p class="deal-vertical">PR &amp; Agencies</p>
+      <p class="deal-amount">A$10,000</p>
+      <p class="deal-vp">Freed agency team from hours of daily manual clipping with real-time competitive benchmarking and automated monthly SOV reports.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Openway Food Co.</p>
+        <span class="badge badge-new">New business</span>
+      </div>
+      <p class="deal-vertical">Food &amp; Beverage</p>
+      <p class="deal-amount">A$10,000</p>
+      <p class="deal-vp">One-week close for young Aussie FMCG brand automating daily newsletter tracking Red Tractor and Table of Plenty brands.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">GSK</p>
+        <span class="badge badge-other">Upsell</span>
+      </div>
+      <p class="deal-vertical">Other</p>
+      <p class="deal-amount">A$9,900</p>
+      <p class="deal-vp">Mira upsell after demo surfaced RSV and Oncology insights — PDF export for leadership sealed the deal at pharma Head of Comms.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Energy Users Assoc. Australia</p>
+        <span class="badge badge-streem">Streem</span>
+      </div>
+      <p class="deal-vertical">NFP &amp; Charities</p>
+      <p class="deal-amount">A$9,600</p>
+      <p class="deal-vp">Won energy advocacy org from Streem on ad-hoc monitoring flexibility — previous champion had used Meltwater at prior employer.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">SA Conservation Council</p>
+        <span class="badge badge-new">New business</span>
+      </div>
+      <p class="deal-vertical">NFP &amp; Charities</p>
+      <p class="deal-amount">A$9,500</p>
+      <p class="deal-vp">Enabled Murray Darling Basin governance body to track government policy and build thought leadership across 200+ member orgs.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Communicare</p>
+        <span class="badge badge-isentia">iSentia</span>
+      </div>
+      <p class="deal-vertical">NFP &amp; Charities</p>
+      <p class="deal-amount">A$9,500</p>
+      <p class="deal-vp">Won DV charity after iSentia missed all social data during NRL crisis — onboarding social listening with full expansion planned.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Finvasia</p>
+        <span class="badge badge-new">New business</span>
+      </div>
+      <p class="deal-vertical">Financial Services</p>
+      <p class="deal-amount">US$9,100</p>
+      <p class="deal-vp">Won fast-moving fintech monitoring financial media and social chatter — crisp value alignment and a sprint-speed close.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">St Barts</p>
+        <span class="badge badge-new">New business</span>
+      </div>
+      <p class="deal-vertical">NFP &amp; Charities</p>
+      <p class="deal-amount">A$9,000</p>
+      <p class="deal-vp">Enabled Perth-based NFP to monitor media presence and research corporate partnership opportunities in one platform.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">HQ Group</p>
+        <span class="badge badge-new">New business</span>
+      </div>
+      <p class="deal-vertical">Other</p>
+      <p class="deal-amount">A$9,000</p>
+      <p class="deal-vp">Gave iconic Melbourne venue group brand monitoring with global trend tracking for seasonal theme planning across venues.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Amagi Corporation</p>
+        <span class="badge badge-new">New business</span>
+      </div>
+      <p class="deal-vertical">Technology</p>
+      <p class="deal-amount">US$8,300</p>
+      <p class="deal-vp">Six-month slow burn — stuck to full-year deal with no discounts despite pressure for a sample period, closed without drama.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">AHURI</p>
+        <span class="badge badge-other">Hootsuite</span>
+      </div>
+      <p class="deal-vertical">NFP &amp; Charities</p>
+      <p class="deal-amount">A$8,050</p>
+      <p class="deal-vp">Replaced Hootsuite with consolidated owned and earned social reporting on a 3-year renewal with advanced social listening added.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Zitcha</p>
+        <span class="badge badge-new">New business</span>
+      </div>
+      <p class="deal-vertical">Technology</p>
+      <p class="deal-amount">A$8,000</p>
+      <p class="deal-vp">Enabled US-expanding Aussie retail media startup to track global market mentions — replacing Buzzsumo for growth monitoring.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Yalummba Wineries</p>
+        <span class="badge badge-new">New business</span>
+      </div>
+      <p class="deal-vertical">Food &amp; Beverage</p>
+      <p class="deal-amount">A$8,000</p>
+      <p class="deal-vp">Pivoted Klear conversation to Media Relations for South Australian winery — monitoring export markets with Klear to follow in Q4.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">St Catherine's Waverly</p>
+        <span class="badge badge-new">New business</span>
+      </div>
+      <p class="deal-vertical">Government &amp; Associations</p>
+      <p class="deal-amount">A$7,000</p>
+      <p class="deal-vp">Quick win for school reputation monitoring and competitor tracking after reputational incidents put the school under public scrutiny.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Melbourne High School</p>
+        <span class="badge badge-new">New business</span>
+      </div>
+      <p class="deal-vertical">Government &amp; Associations</p>
+      <p class="deal-amount">A$7,000</p>
+      <p class="deal-vp">Monitoring solution for only all-boys public school to proactively track wellbeing, boys education and curriculum coverage.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Great Southern Reef Foundation</p>
+        <span class="badge badge-new">New business</span>
+      </div>
+      <p class="deal-vertical">NFP &amp; Charities</p>
+      <p class="deal-amount">A$7,000</p>
+      <p class="deal-vp">Gave marine conservation org automated impact reporting and journalist outreach to demonstrate value to current and future funders.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Einsteinz Communications</p>
+        <span class="badge badge-other">Upsell</span>
+      </div>
+      <p class="deal-vertical">PR &amp; Agencies</p>
+      <p class="deal-amount">A$6,500</p>
+      <p class="deal-vp">Mira upgrade for PR agency realising AI-powered insights potential — one of several add-ons that drove quarter target.</p>
+    </div>
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">Suzuki Australia</p>
+        <span class="badge badge-new">New business</span>
+      </div>
+      <p class="deal-vertical">Other</p>
+      <p class="deal-amount">A$4,000</p>
+      <p class="deal-vp">Added Media Relations to Suzuki Australia's toolkit for journalist targeting and PR outreach to grow brand presence.</p>
+    </div></div>
+</main>
+
+<footer>Generated from #apac-deals2day &nbsp;·&nbsp; Meltwater APAC &nbsp;·&nbsp; 2026</footer>
+
+<script>
+const D=[
+  {co:"Westpac",v:"Financial Services",amt:498900,cur:"AUD",comp:"Streem",vp:"Replaced Streem with Bloomberg-backed global coverage, smarter AI workspaces and GenAI intelligence after years of missed coverage and poor reporting."},
+  {co:"77 Bank",v:"Financial Services",amt:92000,cur:"AUD",comp:"E-Mining / Eltes",vp:"Beat local Japanese competitors with signal-from-noise monitoring for financial misinformation and reputational risk management."},
+  {co:"UniSuper",v:"Financial Services",amt:70000,cur:"AUD",comp:"Streem",vp:"Replaced Streem with unified dashboards across all media channels and AI sentiment analysis, eliminating hours of manual checking for the comms team."},
+  {co:"IMB Bank",v:"Financial Services",amt:50000,cur:"AUD",comp:"iSentia",vp:"Replaced iSentia with social listening, review site monitoring and AI capabilities, adding $15k in new value while navigating a complex AI policy approval process."},
+  {co:"CTF Life",v:"Financial Services",amt:44000,cur:"AUD",comp:"Local vendors",vp:"Replaced local HK vendors with a combined global and Chinese data platform for the MI team tracking social mentions and agent activity."},
+  {co:"Zurich Insurance",v:"Financial Services",amt:39500,cur:"AUD",comp:"Streem",vp:"Replaced Streem with advanced social listening and AI analytics to monitor reputational scandal coverage and enable real-time crisis management."},
+  {co:"Firstmac",v:"Financial Services",amt:24000,cur:"AUD",comp:"iSentia",vp:"Won a motivated champion who signed a 14-month deal immediately, switching from iSentia on superior platform capability and account management."},
+  {co:"Europ Assistance Australia",v:"Financial Services",amt:22600,cur:"AUD",comp:"New business",vp:"Enabled real-time monitoring of travel insurance sentiment during Middle East conflict disruptions to protect brand and grow media presence."},
+  {co:"Kordamentha",v:"Financial Services",amt:19000,cur:"AUD",comp:"Upsell",vp:"Expanded analyst access via Microsoft Connector for rapid client reporting and competitive industry intelligence across the consulting team."},
+  {co:"BSP Financial",v:"Financial Services",amt:17000,cur:"AUD",comp:"New business",vp:"Won PNG's largest bank on unmatched South Pacific media coverage for brand monitoring and regional industry news tracking."},
+  {co:"Finder.com",v:"Financial Services",amt:16000,cur:"AUD",comp:"iSentia",vp:"Consolidated comms, growth and marketing teams with 360° media visibility and native Slack/API integrations after 15 years with iSentia."},
+  {co:"Nan Fung Group",v:"Financial Services",amt:15000,cur:"AUD",comp:"New business",vp:"Signed within 24 hours after demo surfaced critical fire incident content, proving the platform's real-time risk intelligence value."},
+  {co:"Maurice Blackburn Lawyers",v:"Legal",amt:86400,cur:"AUD",comp:"Streem",vp:"Replaced Streem with AI-powered Mira and GAIL, delivering superior social listening, cleaner analytics and faster media intelligence for the whole firm."},
+  {co:"Corrs Chambers Westgarth",v:"Legal",amt:33850,cur:"AUD",comp:"Streem",vp:"Won on superior UX, global monitoring, LinkedIn and Reddit social listening, and better media relations vs Streem's limited newsletter and social capability."},
+  {co:"Minter Ellison",v:"Legal",amt:30000,cur:"AUD",comp:"Streem",vp:"Expanded research team off Streem with unlimited searches and flexible ad-hoc monitoring, fully consolidating all firm teams on Meltwater."},
+  {co:"Australian Local Government Assoc",v:"Government & Associations",amt:40000,cur:"AUD",comp:"New business",vp:"Gave new comms director full media and broadcast visibility plus journalist database to quantify advocacy impact and lead policy conversations."},
+  {co:"SRM Group (India)",v:"Government & Associations",amt:31100,cur:"USD",comp:"New business",vp:"Delivered group-level governance and risk intelligence across 5 education campuses with news, social and LLM monitoring for a CXO-led mandate."},
+  {co:"Northern Grampians Shire Council",v:"Government & Associations",amt:20000,cur:"AUD",comp:"New business",vp:"Replaced manual Google Alerts with automated community sentiment monitoring and real-time alerts for renewables and essential services issues."},
+  {co:"Murray Regional Tourism Board",v:"Government & Associations",amt:19999,cur:"AUD",comp:"New business",vp:"Enabled tourism board to deliver individualised media dashboards across 13 Murray River councils to secure continued government funding."},
+  {co:"DPIRD WA",v:"Government & Associations",amt:18000,cur:"AUD",comp:"Existing provider",vp:"Switched WA government department to Meltwater with automated newsletters and a competitor matrix that helped the champion justify the procurement decision."},
+  {co:"Catholic Schools Parramatta Diocese",v:"Government & Associations",amt:16500,cur:"AUD",comp:"New business",vp:"Replaced manual media clipping with precise geographic content filtering and broadcast monitoring for proactive school crisis management."},
+  {co:"Queensland Trucking Association",v:"Government & Associations",amt:15000,cur:"AUD",comp:"New business",vp:"Shifted from reactive to proactive media monitoring to elevate industry advocacy voice and prove impact to sponsors and members."},
+  {co:"Motor Trade Association QLD",v:"Government & Associations",amt:15000,cur:"AUD",comp:"iSentia",vp:"Beat iSentia with social coverage, better regional monitoring and journalist database — closed by outpacing iSentia's notoriously slow response times."},
+  {co:"Western NSW Public Health Network",v:"Government & Associations",amt:14000,cur:"AUD",comp:"Streem",vp:"Replaced Streem with flexible ad-hoc search and superior broadcast monitoring for government health team managing regional communications."},
+  {co:"Centre for Invasive Species Solutions",v:"NFP & Charities",amt:27000,cur:"AUD",comp:"iSentia",vp:"Replaced iSentia with AI-powered monitoring enabling automated media wrap-ups, deep wildlife community social listening and major team efficiency gains."},
+  {co:"Meli",v:"NFP & Charities",amt:23000,cur:"AUD",comp:"New business",vp:"Automated manual media admin for Bellarine Peninsula NFP, freeing time for proactive content strategy and journalist outreach."},
+  {co:"Mental Health First Aid",v:"NFP & Charities",amt:20000,cur:"AUD",comp:"Streem + Sprout",vp:"Consolidated Streem and Sprout into a single platform with international coverage and unified reporting to better showcase advocacy wins."},
+  {co:"Breast Cancer Network Australia",v:"NFP & Charities",amt:15500,cur:"AUD",comp:"iSentia",vp:"Converted a staunch iSentia loyalist with superior broadcast transcription and an in-person demo that showcased the full platform capability."},
+  {co:"Dylan Alcott Foundation",v:"NFP & Charities",amt:12500,cur:"AUD",comp:"New business",vp:"Enabled foundation to quantify media value for corporate partners and track community sentiment ahead of major festival return."},
+  {co:"St Barts",v:"NFP & Charities",amt:9000,cur:"AUD",comp:"New business",vp:"Enabled Perth-based NFP to monitor media presence and research corporate partnership opportunities in one platform."},
+  {co:"AHURI",v:"NFP & Charities",amt:8050,cur:"AUD",comp:"Hootsuite",vp:"Replaced Hootsuite with consolidated owned and earned social reporting on a 3-year renewal with advanced social listening added."},
+  {co:"BBS Communications",v:"PR & Agencies",amt:80000,cur:"AUD",comp:"iSentia",vp:"Won back boomerang agency client from iSentia with superior ad-hoc search, own search term control and social listening iSentia had misrepresented."},
+  {co:"York Park Group",v:"PR & Agencies",amt:30200,cur:"AUD",comp:"Streem",vp:"Beat Streem with customisable dashboards and Mira Studio AI, positioning Meltwater as a digital media analyst within their consulting team."},
+  {co:"Say So NZ",v:"PR & Agencies",amt:15010,cur:"AUD",comp:"iSentia",vp:"Beat iSentia on competitive NZ print coverage plus superior social and platform capabilities for a fast-moving 4-person agency."},
+  {co:"Dec PR",v:"PR & Agencies",amt:14500,cur:"AUD",comp:"Upsell",vp:"Upsold GAIL Pro as clients increasingly demand LLM monitoring, making Meltwater the consolidated AI intelligence platform for the agency."},
+  {co:"Hyde & Seek",v:"PR & Agencies",amt:10000,cur:"AUD",comp:"New business",vp:"Helped lean agency eliminate manual media reporting with AI-powered monitoring, freeing hours that can be reinvested into winning new business."},
+  {co:"BMD Group",v:"Property & Construction",amt:90000,cur:"AUD",comp:"Streem",vp:"Replaced Streem — just 9 months after switching from iSentia — with Mira-powered workflows across aviation, rail, construction, energy and defence."},
+  {co:"Vicinity Centres",v:"Property & Construction",amt:65000,cur:"AUD",comp:"iSentia",vp:"Replaced iSentia with full social listening and AI-powered monitoring, giving the property company 360° media visibility their previous tool completely lacked."},
+  {co:"Aqualand",v:"Property & Construction",amt:35000,cur:"AUD",comp:"iSentia",vp:"Grew iSentia client spend by $7k with AI boolean assistant and social noise monitoring for construction project complaints and community sentiment."},
+  {co:"M+J Builders (NDA)",v:"Property & Construction",amt:22500,cur:"AUD",comp:"New business",vp:"Won non-traditional legal intelligence use case, deploying Meltwater as an evidence repository to archive media and social content for potential court proceedings."},
+  {co:"GO (Japan Taxi)",v:"Technology",amt:32000,cur:"AUD",comp:"Quid / Brandwatch / Talkwalker",vp:"Beat every major listening competitor to deliver continuous social monitoring of app user pain points and PR risk for Japan's leading ride-hailing platform."},
+  {co:"Tencent",v:"Technology",amt:30000,cur:"AUD",comp:"New business",vp:"Delivered AI-powered daily compliance intelligence on global news and policy for gaming team navigating AI and data privacy regulations."},
+  {co:"JisuLife",v:"Technology",amt:25000,cur:"AUD",comp:"Talkwalker / Brandwatch",vp:"Beat Talkwalker and Brandwatch with targeted social listening for marketing transformation and product feedback across China and global expansion markets."},
+  {co:"RØDE Microphones",v:"Technology",amt:22000,cur:"AUD",comp:"New business",vp:"Replaced expensive PR agencies with in-house Mira Studio monitoring for brand tracking, media release distribution and competitor benchmarking."},
+  {co:"Veracio",v:"Technology",amt:18000,cur:"AUD",comp:"New business",vp:"Signed within 24 hours by delivering consolidated global media visibility and QoQ ROI reporting to prove PR investment to leadership."},
+  {co:"Legrand",v:"Technology",amt:17500,cur:"AUD",comp:"New business",vp:"Enabled new Director of Communications to build PR strategy with journalist discovery, earned media tracking and competitive share of voice monitoring."},
+  {co:"Zoff (Japan)",v:"Retail & Consumer",amt:60000,cur:"AUD",comp:"New business",vp:"Delivered always-on competitive benchmarking and CX theme analysis for eyewear brand to systematically improve service quality against JINS and OWNDAYS."},
+  {co:"Human Made (Japan)",v:"Retail & Consumer",amt:20000,cur:"AUD",comp:"New business",vp:"Won CX team post-Tokyo Stock Exchange listing with brand mention monitoring to manage reseller complaints and customer experience issues at scale."},
+  {co:"Forty Winks",v:"Retail & Consumer",amt:12000,cur:"AUD",comp:"Upsell",vp:"Added Klear to enable luxury mattress retailer to discover HNI influencers and streamline campaign briefing via AI-powered landing pages."},
+  {co:"Wella",v:"Retail & Consumer",amt:12000,cur:"AUD",comp:"New business",vp:"Enabled beauty brand to rapidly monitor product safety allegations on social media through a trusted champion referral from a previous customer."},
+  {co:"Fuji Pharma",v:"Healthcare & Pharma",amt:48000,cur:"AUD",comp:"New business",vp:"Delivered integrated media monitoring, newsletter distribution and Dow Jones integration for pharma comms team across print, digital and social."},
+  {co:"Australian Physiotherapy Association",v:"Healthcare & Pharma",amt:10960,cur:"AUD",comp:"Brandwatch + Streem",vp:"Beat a Brandwatch and Streem bundle with Klear AI search for influencer marketing and advanced social listening in one consolidated platform."},
+  {co:"Specialist Protection Group (NDA)",v:"Other",amt:60000,cur:"AUD",comp:"New business",vp:"Built client-specific intelligence workflows with Microsoft Teams integration delivering real-time tailored media feeds per protected individual and asset."},
+  {co:"Melco Resorts",v:"Other",amt:34000,cur:"AUD",comp:"New business",vp:"Enabled casino and resort group comms team to monitor brand and risk globally using an AI teammate for real-time intelligence across operations."},
+  {co:"ANFF",v:"Other",amt:32100,cur:"AUD",comp:"New business",vp:"Aggregated 20 research institutions under one Meltwater license, enabling consolidated media intelligence across Australia's national research network."},
+  {co:"Omnes Videntes (NZ)",v:"Other",amt:30000,cur:"NZD",comp:"Streem",vp:"Beat Streem with superior social listening and flexible platform for NZ security firm running real-time threat intelligence across client business operations."},
+  {co:"Syngenta Australia",v:"Other",amt:21000,cur:"AUD",comp:"Streem",vp:"Replaced Streem's inflexible search management with user-controlled ad-hoc searching and a streamlined newsletter workflow for the agri communications team."},
+  {co:"XO Sports",v:"Other",amt:18000,cur:"AUD",comp:"Hypetap",vp:"Beat Hypetap with in-person consultative demo, positioning Klear as the only viable ad channel for pre-revenue sports brand restricted from paid social."},
+  {co:"Allume Energy",v:"Other",amt:10000,cur:"AUD",comp:"New business",vp:"Gave solar startup targeted journalist discovery and launch coverage reporting to prove PR impact and build media relations."},
+  // ── Financial Services ──────────────────────────────────────────────────────
+  {co:"ABSEC",v:"Financial Services",amt:13000,cur:"AUD",comp:"Streem & iSentia",vp:"Beat Streem and iSentia with broader social listening and flexible reporting in a fully competitive new process."},
+  {co:"Westgold Resources",v:"Financial Services",amt:16000,cur:"AUD",comp:"New business",vp:"Mining company's new Comm & IR Director chose Meltwater for 24/7 crisis monitoring and Teams-integrated real-time alerts."},
+  {co:"Finvasia",v:"Financial Services",amt:9100,cur:"USD",comp:"New business",vp:"Won fast-moving fintech monitoring financial media and social chatter — crisp value alignment and a sprint-speed close."},
+  {co:"Prospa",v:"Financial Services",amt:18000,cur:"AUD",comp:"Sprinklr",vp:"Replaced Sprinklr's complex enterprise setup with Engage's intuitive platform — unified Marketing and Customer Service teams."},
+  {co:"Vision Super",v:"Financial Services",amt:15000,cur:"AUD",comp:"New business",vp:"Re-engaged returning customer post-merger to track industry conversations and expand journalist outreach across new regions."},
+  {co:"ASFA",v:"Financial Services",amt:21000,cur:"AUD",comp:"Streem",vp:"Replaced Streem with Bloomberg partnership, social echo and full platform flexibility — their words: 'clearly the superior tool.'"},
+  {co:"RACV",v:"Financial Services",amt:115000,cur:"AUD",comp:"Streem & Brandwatch",vp:"Consolidated Streem, Brandwatch and MediaNet into one AI-powered platform with unified corporate and marketing reporting."},
+  {co:"Kenvue",v:"Financial Services",amt:40000,cur:"AUD",comp:"iSentia",vp:"Displaced iSentia for J&J's consumer health spin-off with Mira AI, real-time APAC brand tracking and standardised global reporting."},
+  // ── Legal ───────────────────────────────────────────────────────────────────
+  {co:"MinterEllison",v:"Legal",amt:43500,cur:"AUD",comp:"Streem",vp:"6 years in the making — signed former employer for social media management, media monitoring, social listening, media relations and reporting."},
+  {co:"EY Australia",v:"Legal",amt:41000,cur:"AUD",comp:"Streem",vp:"Champion built relationship in shared office building — Mira and Copilot as perfect fit for Microsoft's largest global client sold the deal."},
+  // ── Government & Associations ───────────────────────────────────────────────
+  {co:"Bathurst Regional Council",v:"Government & Associations",amt:17000,cur:"AUD",comp:"iSentia",vp:"Won back boomerang council from iSentia with improved regional coverage — 'Meltwater has changed so much over the last 2 years.'"},
+  {co:"City of Wanneroo",v:"Government & Associations",amt:36900,cur:"AUD",comp:"iSentia & Hootsuite",vp:"Replaced both iSentia and Hootsuite with all-in-one social listening, SMM and automated reporting after tender win."},
+  {co:"Fairfield City Council",v:"Government & Associations",amt:30000,cur:"AUD",comp:"Streem & iSentia",vp:"Armed council with Meltwater's RFQ requirements, defeating Streem, iSentia and Hootsuite — team: 'I froth this tool, it's sick.'"},
+  {co:"Greater Shepparton City Council",v:"Government & Associations",amt:15000,cur:"AUD",comp:"New business",vp:"Turned a budget-knocked-back council into a signed deal by offering an exec demo — CEO and councillor spike alerts now live."},
+  {co:"AMSA",v:"Government & Associations",amt:61500,cur:"AUD",comp:"Streem & iSentia",vp:"Government comeback deal after 4 years — blind demo with no discovery, ending with: 'I could spend hours in this beautiful platform.'"},
+  {co:"City of Mandurah",v:"Government & Associations",amt:52000,cur:"AUD",comp:"Brandwatch & Hootsuite",vp:"Grew a $4k account to $52k ACV, navigating RFP and legal hurdles to consolidate Tourism, CS and Comms on one platform."},
+  {co:"Holmesglen TAFE",v:"Government & Associations",amt:30000,cur:"AUD",comp:"Streem & Hootsuite",vp:"Generated a live report during demo that Comms Manager had just failed to do in Streem — 6 months of hand-holding rewarded."},
+  {co:"DFES WA",v:"Government & Associations",amt:19500,cur:"AUD",comp:"New business",vp:"Selected for emergency crisis monitoring, rapid WA media coverage and Teams integration to coordinate emergency response comms."},
+  {co:"Greater Hume Council",v:"Government & Associations",amt:18000,cur:"AUD",comp:"New business",vp:"Signed after first demo without considering competitors — replacing zero oversight and Google Alerts with 24/7 community monitoring."},
+  {co:"State School Teachers Union WA",v:"Government & Associations",amt:19900,cur:"AUD",comp:"Streem",vp:"Cold-call-turned-champion deal off Streem — same-day Engage demo and tipped value won the DM who now emails multiple times daily."},
+  {co:"Jehovah's Witnesses Australia",v:"Government & Associations",amt:14600,cur:"AUD",comp:"Streem",vp:"Converted 3-year Streem customer with Media Relations search, superior international and Pacific coverage, and better sourcebase."},
+  {co:"St Catherine's Waverly",v:"Government & Associations",amt:7000,cur:"AUD",comp:"New business",vp:"Quick win for school reputation monitoring and competitor tracking after reputational incidents put the school under public scrutiny."},
+  {co:"Crime Stoppers Victoria",v:"Government & Associations",amt:21000,cur:"AUD",comp:"iSentia",vp:"Replaced iSentia's missed early/late broadcast with searchable transcripts — content comparison on AFL clinched the deal."},
+  {co:"Melbourne High School",v:"Government & Associations",amt:7000,cur:"AUD",comp:"New business",vp:"Monitoring solution for only all-boys public school to proactively track wellbeing, boys education and curriculum coverage."},
+  // ── NFP & Charities ─────────────────────────────────────────────────────────
+  {co:"Climate 200",v:"NFP & Charities",amt:29000,cur:"AUD",comp:"Streem",vp:"Converted a long-time Streem customer with flexible reporting and Mira AI — users and decision-makers had very different decision criteria."},
+  {co:"LGBTIQ+ Health Australia",v:"NFP & Charities",amt:10000,cur:"AUD",comp:"New business",vp:"Helped advocacy group bring media monitoring in-house for spike alerts, journalist database and board-ready crisis reporting."},
+  {co:"Frontier Services",v:"NFP & Charities",amt:13000,cur:"AUD",comp:"New business",vp:"Set up NFP supporting remote Australians with monitoring ahead of new marketing campaign — 'real-world tech doing good.'"},
+  {co:"SA Conservation Council",v:"NFP & Charities",amt:9500,cur:"AUD",comp:"New business",vp:"Enabled Murray Darling Basin governance body to track government policy and build thought leadership across 200+ member orgs."},
+  {co:"Communicare",v:"NFP & Charities",amt:9500,cur:"AUD",comp:"iSentia",vp:"Won DV charity after iSentia missed all social data during NRL crisis — onboarding social listening with full expansion planned."},
+  {co:"Chris O'Brien Lifehouse",v:"NFP & Charities",amt:10500,cur:"AUD",comp:"iSentia",vp:"Replaced iSentia for leading cancer centre with automated reporting and newsletter — signed within days of demo."},
+  {co:"BEING Mental Health",v:"NFP & Charities",amt:12000,cur:"AUD",comp:"Streem & Medianet",vp:"Won multi-vendor competitive process — all-in-one monitoring and social listening now automates a full day of weekly newsletter work."},
+  {co:"People With Disability Australia",v:"NFP & Charities",amt:10000,cur:"AUD",comp:"Streem & iSentia",vp:"Replaced Streem and iSentia with custom dashboards, AI search assistant and social spokesperson tracking for disability advocacy."},
+  {co:"Triple P Parenting",v:"NFP & Charities",amt:18500,cur:"AUD",comp:"Streem & Medianet",vp:"Won back former Meltwater customer who had tried iSentia then Streem — returned on missed clips and poor account management."},
+  {co:"ACCR",v:"NFP & Charities",amt:40500,cur:"AUD",comp:"iSentia",vp:"Won shareholder advocacy org from iSentia/Pulsar — unlimited ad-hoc search and global coverage for funder and donor reporting."},
+  {co:"Anglicare WA",v:"NFP & Charities",amt:21000,cur:"AUD",comp:"MyMedia",vp:"Replaced MyMedia with print, broadcast and social monitoring — signed quickly on ad-hoc searching, social echo and automated reports."},
+  {co:"Anglicare WA Engage",v:"NFP & Charities",amt:20800,cur:"AUD",comp:"Upsell",vp:"Engage and Insights Reports cross-sell to WA social services org — saves a full day per month on report generation."},
+  {co:"Fred Hollows Foundation NZ",v:"NFP & Charities",amt:12000,cur:"NZD",comp:"iSentia",vp:"Doubled spend by converting iSentia MR client to full monitoring and relations — transparency on EULA built winning trust."},
+  {co:"Table Tennis Australia",v:"NFP & Charities",amt:10000,cur:"AUD",comp:"New business",vp:"Enabled growing sports federation to track athletes, international coverage and grow brand with journalist database."},
+  {co:"Committee for Perth",v:"NFP & Charities",amt:15000,cur:"AUD",comp:"MyMedia",vp:"Replaced MyMedia with social listening, social echo and scheduled reports for Perth's leading advocacy think tank."},
+  {co:"Energy Users Assoc. Australia",v:"NFP & Charities",amt:9600,cur:"AUD",comp:"Streem",vp:"Won energy advocacy org from Streem on ad-hoc monitoring flexibility — previous champion had used Meltwater at prior employer."},
+  {co:"Intowork Australia",v:"NFP & Charities",amt:29000,cur:"AUD",comp:"Brandwatch",vp:"Beat Brandwatch in pure Engage deal — 20 users consolidated across Comms and Marketing with single source of truth."},
+  {co:"RSL Lifecare",v:"NFP & Charities",amt:11000,cur:"AUD",comp:"Upsell",vp:"Upsold additional users and Engage profiles to RSL aged care after EBR uncovered growing subsidiary clubs."},
+  {co:"IEEFA",v:"NFP & Charities",amt:72000,cur:"AUD",comp:"Cision",vp:"Replaced Cision after 3-year failed contract — won on Australian paywall access, superior global coverage and 'five gold star' AI."},
+  {co:"Great Southern Reef Foundation",v:"NFP & Charities",amt:7000,cur:"AUD",comp:"New business",vp:"Gave marine conservation org automated impact reporting and journalist outreach to demonstrate value to current and future funders."},
+  // ── PR & Agencies ────────────────────────────────────────────────────────────
+  {co:"Reymond Communications",v:"PR & Agencies",amt:24000,cur:"AUD",comp:"Streem",vp:"Won back boomerang agency — left in 2022, tried iSentia then Streem, returning home on reporting and international mentions."},
+  {co:"6am Agency",v:"PR & Agencies",amt:22000,cur:"AUD",comp:"iSentia",vp:"Finally won healthcare agency long auto-renewed by iSentia — switching for reporting flexibility and international coverage."},
+  {co:"Preface Social Media",v:"PR & Agencies",amt:16320,cur:"AUD",comp:"Pulsar & iSentia",vp:"Won back previous Meltwater customer from Pulsar and iSentia — global media access, AI Mira and all-in-one streaming."},
+  {co:"Closer Communications",v:"PR & Agencies",amt:10000,cur:"AUD",comp:"Sprout & iSentia",vp:"Freed agency team from hours of daily manual clipping with real-time competitive benchmarking and automated monthly SOV reports."},
+  {co:"Poem Group",v:"PR & Agencies",amt:25000,cur:"AUD",comp:"Hype Auditor",vp:"Beat Hype Auditor for agency with F1 partnerships — predictive ROI, suggested influencer costs and AI discovery closed the deal."},
+  {co:"PB Communications",v:"PR & Agencies",amt:19500,cur:"AUD",comp:"Streem",vp:"Moved strategic comms consultancy off Streem with smarter AI alerts and reporting for PR campaign tracking."},
+  {co:"Bread Agency",v:"PR & Agencies",amt:17000,cur:"AUD",comp:"Grin & Fabulate",vp:"Beat Grin and Fabulate with Klear's discovery strengths — DM had used Klear at Red Havas and confirmed it was better suited."},
+  {co:"TDCX",v:"PR & Agencies",amt:29500,cur:"SGD",comp:"Brandwatch",vp:"Beat Brandwatch for Singapore digital agency with full social listening, Engage and MR — local support was decisive."},
+  {co:"Three6",v:"PR & Agencies",amt:19600,cur:"AUD",comp:"Brandwatch",vp:"Beat Brandwatch with ad-hoc searching ease and Mira AI — replacing costly human focus groups for market research firm."},
+  {co:"PC Agency",v:"PR & Agencies",amt:72000,cur:"AUD",comp:"Cision & Agility PR",vp:"Turned small Aussie print brief into global luxury travel PR deal — midnight live demo to London CEO landed the global mandate."},
+  {co:"Einsteinz Communications",v:"PR & Agencies",amt:6500,cur:"AUD",comp:"Upsell",vp:"Mira upgrade for PR agency realising AI-powered insights potential — one of several add-ons that drove quarter target."},
+  // ── Technology ───────────────────────────────────────────────────────────────
+  {co:"Google Japan",v:"Technology",amt:78000,cur:"USD",comp:"New business",vp:"Won Google B2B Marketing on customisable SOV monitoring vs Meta, X, TikTok and LINE — bilingual managed services clinched it."},
+  {co:"CyberCX",v:"Technology",amt:30000,cur:"AUD",comp:"Streem",vp:"Beat Streem's Australia-only broadcast with global coverage and accurate media counting vs Streem's inflated segment counts."},
+  {co:"Mitsubishi Electric HQ",v:"Technology",amt:133000,cur:"USD",comp:"Sprinklr & Talkwalker",vp:"Beat Sprinklr and Talkwalker despite being most expensive — won on people, premium support and Microsoft partnership synergy."},
+  {co:"Zitcha",v:"Technology",amt:8000,cur:"AUD",comp:"New business",vp:"Enabled US-expanding Aussie retail media startup to track global market mentions — replacing Buzzsumo for growth monitoring."},
+  {co:"Nxtquantum",v:"Technology",amt:16300,cur:"USD",comp:"New business",vp:"Closed smartphone maker on the spot after sharp Klear demo — founder: 'when the value is clear and the pitch is sharp, deals move fast.'"},
+  {co:"Jack Taylor Australia",v:"Technology",amt:16500,cur:"AUD",comp:"New business",vp:"Won by building GM relationship over lunch — team was literally buying magazines and scanning manually before Meltwater."},
+  {co:"Superloop",v:"Technology",amt:15000,cur:"AUD",comp:"Streem",vp:"Replaced Streem's missed clips with AI daily media summaries, spike analysis and sentiment-aware CEO reports."},
+  {co:"Amagi Corporation",v:"Technology",amt:8300,cur:"USD",comp:"New business",vp:"Six-month slow burn — stuck to full-year deal with no discounts despite pressure for a sample period, closed without drama."},
+  {co:"Shemaroo Entertainment",v:"Technology",amt:14400,cur:"USD",comp:"New business",vp:"After 1.5 years and 6 internal teams, became media partner for OTT content, music rights and 30+ brand handle management."},
+  {co:"Quintype",v:"Technology",amt:27500,cur:"USD",comp:"Talkwalker",vp:"Beat Talkwalker for digital publishing platform — spontaneous 10-minute upsell during closing call jumped deal value by $5k."},
+  {co:"M3Company",v:"Technology",amt:19000,cur:"AUD",comp:"New business",vp:"Inbound win for Japanese healthcare content company — social listening replacing fully manual data collection for PR content planning."},
+  {co:"Komatsu Ltd.",v:"Technology",amt:20500,cur:"USD",comp:"New business",vp:"Won Japanese conglomerate global brand team on reporting automation — deal closed in the final minutes of the quarter."},
+  {co:"Nsight Consulting",v:"Technology",amt:25000,cur:"AUD",comp:"Upsell",vp:"API upsell for consulting firm exporting 52M data points to government clients — finding the gap and right package quickly."},
+  // ── Food & Beverage ──────────────────────────────────────────────────────────
+  {co:"Yalummba Wineries",v:"Food & Beverage",amt:8000,cur:"AUD",comp:"New business",vp:"Pivoted Klear conversation to Media Relations for South Australian winery — monitoring export markets with Klear to follow in Q4."},
+  {co:"Stockyard Beef",v:"Food & Beverage",amt:18000,cur:"AUD",comp:"New business",vp:"Won beef exporter monitoring Dubai restaurant mentions and boosting local social presence — sparked by tariff conversations."},
+  {co:"Roll'd Vietnamese",v:"Food & Beverage",amt:39000,cur:"AUD",comp:"New business",vp:"Won 100-store chain on consolidated solution — founder chose Meltwater after in-person meeting proved relationship matters most."},
+  {co:"De Bortoli Wines",v:"Food & Beverage",amt:30150,cur:"AUD",comp:"iSentia & Later",vp:"Replaced iSentia and Later with all-in-one social listening, monitoring, APAC social and Engage for wine exports."},
+  {co:"Openway Food Co.",v:"Food & Beverage",amt:10000,cur:"AUD",comp:"New business",vp:"One-week close for young Aussie FMCG brand automating daily newsletter tracking Red Tractor and Table of Plenty brands."},
+  {co:"Treasury Wine Estates (SEA)",v:"Food & Beverage",amt:46000,cur:"AUD",comp:"Cision & Truescope",vp:"Won 10-market SEA solution beating Cision who offered 50% less — global coverage, AI roadmap and unified social/media sealed it."},
+  {co:"HyFun Foods",v:"Food & Beverage",amt:14000,cur:"USD",comp:"New business",vp:"Won frozen foods exporter through returning champion trust — global brand surveillance across 60+ markets and influencer discovery."},
+  {co:"Innova Market Insights",v:"Food & Beverage",amt:14000,cur:"AUD",comp:"Upsell",vp:"Upsold Mira Studio and user seats to F&B research firm creating client dashboards on trending flavours and regional markets."},
+  // ── Retail & Consumer ────────────────────────────────────────────────────────
+  {co:"Cue Clothing Co",v:"Retail & Consumer",amt:27500,cur:"AUD",comp:"Sprout, Later & Grin",vp:"Won restructuring fashion brand with SL, Engage and Klear package — targeting younger demographic through all-in-one martech."},
+  {co:"MECCA",v:"Retail & Consumer",amt:50000,cur:"AUD",comp:"New business",vp:"Opened social listening for Australia's leading beauty retailer for the first time — enabling proactive brand risk management."},
+  {co:"Coles",v:"Retail & Consumer",amt:22000,cur:"AUD",comp:"Brandwatch & Sprinklr",vp:"Re-won Coles for Klear with tailored Australian influencer discovery — turned junior contact challenge into DM close."},
+  {co:"GenTech Seeds",v:"Retail & Consumer",amt:28000,cur:"AUD",comp:"Streem & Brand24",vp:"Beat Streem and Brand24 for ag brand needing unified ANZ social listening — Engage onboarding planned for next year."},
+  {co:"Khetika",v:"Retail & Consumer",amt:12500,cur:"USD",comp:"New business",vp:"Won D2C consumer goods SMB with Explore, Engage and Klear through persistence over long negotiations and tight budget."},
+  {co:"Miraggio",v:"Retail & Consumer",amt:12800,cur:"USD",comp:"New business",vp:"Won fashion brand after 5-month Reddit outreach — re-engaged with tailored digest after deal went cold, closed full package."},
+  {co:"Arvind Mafatlal Group",v:"Retail & Consumer",amt:10200,cur:"USD",comp:"New business",vp:"Won Indian textile conglomerate through ex-user referral — champion championed Meltwater on her way out."},
+  {co:"Mattel APAC",v:"Retail & Consumer",amt:32000,cur:"AUD",comp:"New business",vp:"Won global toy giant on APAC trade publication coverage, supply chain monitoring and brand sentiment for Barbie and Hot Wheels."},
+  // ── Healthcare & Pharma ──────────────────────────────────────────────────────
+  {co:"Neurizon Therapeutics",v:"Healthcare & Pharma",amt:21500,cur:"AUD",comp:"New business",vp:"Replaced Quarterback with global coverage, benchmarking and newsletter — Analyze dashboard wowed both champion and boss in same meeting."},
+  {co:"Birdon Group",v:"Healthcare & Pharma",amt:24000,cur:"AUD",comp:"Cision",vp:"Beat Cision on Australian paywall, Mira AI, broadcast and local AM — a cold call that uncovered every one of Cision's weaknesses."},
+  {co:"Brisbane North PHN",v:"Healthcare & Pharma",amt:18000,cur:"AUD",comp:"Streem",vp:"Won back 8-year former customer from Streem — live demo found content Streem had missed hours after it was published."},
+  // ── Other ────────────────────────────────────────────────────────────────────
+  {co:"NSW Teachers Federation",v:"Other",amt:24000,cur:"AUD",comp:"Upsell",vp:"Pulled forward contract $64k→$88k with Engage and API — champion persisted through landline-only contact and two departed champions."},
+  {co:"Tourism Whitsundays",v:"Other",amt:18000,cur:"AUD",comp:"Streem & Sprout",vp:"Replaced Streem and Sprout with consolidated platform — saving time and delivering sentiment analysis for key destinations."},
+  {co:"Zeekr Australia",v:"Other",amt:21750,cur:"AUD",comp:"iSentia",vp:"Won Chinese EV brand from iSentia with standardised APAC reporting, brand SOV dashboards and strong agency relationship support."},
+  {co:"NZ Thoroughbred Racing",v:"Other",amt:17900,cur:"NZD",comp:"Fuseworks & iSentia",vp:"Replaced Fuseworks, Later and iSentia with all-in-one platform — total spend rose from NZD$8k to $17.9k."},
+  {co:"HQ Group",v:"Other",amt:9000,cur:"AUD",comp:"New business",vp:"Gave iconic Melbourne venue group brand monitoring with global trend tracking for seasonal theme planning across venues."},
+  {co:"Trilogy Hotels",v:"Other",amt:15500,cur:"AUD",comp:"Streem",vp:"Won hotel management startup from Streem with comprehensive monitoring for social sentiment and hotel brand crisis management."},
+  {co:"Mounties Group",v:"Other",amt:20000,cur:"AUD",comp:"Upsell",vp:"Long-standing customer expanded with Social Advertising and Print monitoring — Reddit and ANZAC Day coverage unlocked unseen value."},
+  {co:"LeapFrogger",v:"Other",amt:40000,cur:"AUD",comp:"Sprout & Tagger",vp:"Beat Sprout and Tagger with Klear's Australian influencer discovery and all-in-one PEO reporting for Melbourne digital agency."},
+  {co:"Worley",v:"Other",amt:30000,cur:"AUD",comp:"Upsell",vp:"Custom Reporting and Media Relations upsell — Media Impact methodology proved PR ROI to ELT beyond net sentiment."},
+  {co:"GSK",v:"Other",amt:9900,cur:"AUD",comp:"Upsell",vp:"Mira upsell after demo surfaced RSV and Oncology insights — PDF export for leadership sealed the deal at pharma Head of Comms."},
+  {co:"Ario",v:"Other",amt:16500,cur:"AUD",comp:"iSentia",vp:"Won scooter brand from iSentia — Slack integration removal was deal-breaker for iSentia, overseas market sentiment monitoring sealed it."},
+  {co:"FMH Group",v:"Other",amt:19900,cur:"AUD",comp:"New business",vp:"Won logistics group after broadcast media storm from truck incident — proactive crisis monitoring for Couriers Please and Border Express."},
+  {co:"Suzuki Australia",v:"Other",amt:4000,cur:"AUD",comp:"New business",vp:"Added Media Relations to Suzuki Australia's toolkit for journalist targeting and PR outreach to grow brand presence."},
+];
+
+const SL={
+  'Financial Services':'Fin. services',
+  'Government & Associations':'Government',
+  'NFP & Charities':'NFP',
+  'Property & Construction':'Property',
+  'Healthcare & Pharma':'Healthcare',
+  'Retail & Consumer':'Retail',
+  'PR & Agencies':'PR & agencies',
+  'Food & Beverage':'Food & bev.',
+  'Legal':'Legal','Technology':'Technology','Other':'Other'
+};
+
+function sl(v){return SL[v]||v;}
+
+function bc(c){
+  if(c.includes('Streem')) return 'badge-streem';
+  if(c==='iSentia') return 'badge-isentia';
+  if(c==='New business') return 'badge-new';
+  return 'badge-other';
+}
+
+function sym(cur){return cur==='AUD'?'A$':cur==='NZD'?'NZ$':'US$';}
+
+function getF(){
+  const fv=document.getElementById('selV').value;
+  const fc=document.getElementById('selC').value;
+  return D.filter(d=>{
+    const vOk=fv==='All'||d.v===fv;
+    const cOk=fc==='All'||
+      (fc==='Streem'&&d.comp.includes('Streem'))||
+      (fc==='iSentia'&&d.comp==='iSentia')||
+      (fc==='New business'&&d.comp==='New business')||
+      (fc==='Other comp'&&!['Streem','Streem + Sprout','Brandwatch + Streem','iSentia','New business'].includes(d.comp));
+    return vOk&&cOk;
+  });
+}
+
+let ci;
+
+function go(){
+  const f=getF();
+  const iCnt=f.filter(d=>d.comp==='iSentia').length;
+  const sCnt=f.filter(d=>d.comp.includes('Streem')).length;
+
+  document.getElementById('stats').innerHTML=`
+    <div class="stat-card">
+      <p class="stat-label">Number of deals</p>
+      <p class="stat-value">${f.length}</p>
+    </div>
+    <div class="stat-card amber">
+      <p class="stat-label">Won from iSentia</p>
+      <p class="stat-value">${iCnt}</p>
+    </div>
+    <div class="stat-card red">
+      <p class="stat-label">Won from Streem</p>
+      <p class="stat-value">${sCnt}</p>
+    </div>`;
+
+  const vc={};
+  f.forEach(d=>{vc[d.v]=(vc[d.v]||0)+1;});
+  const srt=Object.entries(vc).sort((a,b)=>b[1]-a[1]);
+  ci.data.labels=srt.map(([v])=>sl(v));
+  ci.data.datasets[0].data=srt.map(([,c])=>c);
+  ci.update('active');
+
+  const cards=[...f].sort((a,b)=>b.amt-a.amt);
+  document.getElementById('cnt').textContent=cards.length+' deal'+(cards.length!==1?'s':'')+' — ordered by ACV';
+
+  if(!cards.length){
+    document.getElementById('grid').innerHTML='<p class="empty">No deals match this filter.</p>';
+    return;
+  }
+
+  document.getElementById('grid').innerHTML=cards.map(d=>`
+    <div class="deal-card">
+      <div class="deal-header">
+        <p class="deal-company">${d.co}</p>
+        <span class="badge ${bc(d.comp)}">${d.comp}</span>
+      </div>
+      <p class="deal-vertical">${d.v}</p>
+      <p class="deal-amount">${sym(d.cur)}${d.amt.toLocaleString()}</p>
+      <p class="deal-vp">${d.vp}</p>
+    </div>`).join('');
+}
+
+ci=new Chart(document.getElementById('chart'),{
+  type:'bar',
+  data:{labels:[],datasets:[{data:[],backgroundColor:'#185FA5',hoverBackgroundColor:'#0C447C',borderRadius:5,maxBarThickness:56}]},
+  options:{
+    responsive:true,maintainAspectRatio:false,
+    animation:{duration:250},
+    plugins:{
+      legend:{display:false},
+      tooltip:{callbacks:{label:ctx=>' '+ctx.raw+' deal'+(ctx.raw!==1?'s':'')}}
+    },
+    scales:{
+      x:{ticks:{color:'#888',font:{size:11},maxRotation:40,autoSkip:false},grid:{display:false},border:{display:false}},
+      y:{ticks:{color:'#888',font:{size:11},stepSize:1,callback:v=>Number.isInteger(v)?v:''},grid:{color:'rgba(0,0,0,0.05)'},border:{display:false},beginAtZero:true}
+    }
+  }
+});
+
+go();
+</script>
+
+
+</body></html>
