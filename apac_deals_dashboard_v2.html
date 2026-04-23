@@ -1,0 +1,218 @@
+
+<h2 class="sr-only">APAC deals won dashboard. 59 deals from #apac-deals2day filterable by industry and competitor, showing deal counts, a column chart, and ACV-ordered deal cards.</h2>
+
+<div style="padding:1rem 0;">
+
+<div id="stats" style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:1.5rem;"></div>
+
+<div style="background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1.25rem;margin-bottom:1.25rem;">
+  <p style="font-size:13px;font-weight:500;margin:0 0 1rem;color:var(--color-text-primary);">Deals won by vertical</p>
+  <div style="position:relative;width:100%;height:220px;">
+    <canvas id="barchart" role="img" aria-label="Column chart of deals won by vertical. Financial Services leads with 12, followed by Government 9, NFP 7, Other 7, Technology 6, PR & Agencies 5, Property 4, Retail 4, Legal 3, Healthcare 2.">Financial Services 12, Government 9, NFP 7, Other 7, Technology 6, PR & Agencies 5, Property 4, Retail 4, Legal 3, Healthcare 2.</canvas>
+  </div>
+</div>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:1.25rem;">
+  <div>
+    <label style="font-size:12px;color:var(--color-text-secondary);display:block;margin-bottom:6px;">Industry</label>
+    <select id="selV" onchange="go()">
+      <option value="All">All industries</option>
+      <option value="Financial Services">Financial services</option>
+      <option value="Government & Associations">Government & associations</option>
+      <option value="NFP & Charities">NFP & charities</option>
+      <option value="Property & Construction">Property & construction</option>
+      <option value="Technology">Technology</option>
+      <option value="PR & Agencies">PR & agencies</option>
+      <option value="Legal">Legal</option>
+      <option value="Retail & Consumer">Retail & consumer</option>
+      <option value="Healthcare & Pharma">Healthcare & pharma</option>
+      <option value="Other">Other</option>
+    </select>
+  </div>
+  <div>
+    <label style="font-size:12px;color:var(--color-text-secondary);display:block;margin-bottom:6px;">Competitor</label>
+    <select id="selC" onchange="go()">
+      <option value="All">All competitors</option>
+      <option value="Streem">Streem</option>
+      <option value="iSentia">iSentia</option>
+      <option value="New business">New business</option>
+      <option value="Other comp">Other / upsell</option>
+    </select>
+  </div>
+</div>
+
+<p id="cnt" style="font-size:13px;color:var(--color-text-secondary);margin:0 0 12px;"></p>
+<div id="grid" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px;"></div>
+</div>
+
+<style>
+.dc{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1rem 1.25rem;display:flex;flex-direction:column;gap:0}
+.bd{font-size:11px;padding:2px 8px;border-radius:var(--border-radius-md);font-weight:500;white-space:nowrap;flex-shrink:0}
+.bs{background:var(--color-background-danger);color:var(--color-text-danger)}
+.bi{background:var(--color-background-warning);color:var(--color-text-warning)}
+.bn{background:var(--color-background-success);color:var(--color-text-success)}
+.bo{background:var(--color-background-secondary);color:var(--color-text-secondary)}
+</style>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+const D=[
+  {co:"Westpac",v:"Financial Services",amt:498900,cur:"AUD",comp:"Streem",vp:"Replaced Streem with Bloomberg-backed global coverage, smarter AI workspaces and GenAI intelligence after years of missed coverage and poor reporting."},
+  {co:"77 Bank",v:"Financial Services",amt:92000,cur:"AUD",comp:"E-Mining / Eltes",vp:"Beat local Japanese competitors with signal-from-noise monitoring for financial misinformation and reputational risk management."},
+  {co:"UniSuper",v:"Financial Services",amt:70000,cur:"AUD",comp:"Streem",vp:"Replaced Streem with unified dashboards across all media channels and AI sentiment analysis, eliminating hours of manual checking for the comms team."},
+  {co:"IMB Bank",v:"Financial Services",amt:50000,cur:"AUD",comp:"iSentia",vp:"Replaced iSentia with social listening, review site monitoring and AI capabilities, adding $15k in new value while navigating a complex AI policy approval process."},
+  {co:"CTF Life",v:"Financial Services",amt:44000,cur:"AUD",comp:"Local vendors",vp:"Replaced local HK vendors with a combined global and Chinese data platform for the MI team tracking social mentions and agent activity."},
+  {co:"Zurich Insurance",v:"Financial Services",amt:39500,cur:"AUD",comp:"Streem",vp:"Replaced Streem with advanced social listening and AI analytics to monitor reputational scandal coverage and enable real-time crisis management."},
+  {co:"Firstmac",v:"Financial Services",amt:24000,cur:"AUD",comp:"iSentia",vp:"Won a motivated champion who signed a 14-month deal immediately, switching from iSentia on superior platform capability and account management."},
+  {co:"Europ Assistance Australia",v:"Financial Services",amt:22600,cur:"AUD",comp:"New business",vp:"Enabled real-time monitoring of travel insurance sentiment during Middle East conflict disruptions to protect brand and grow media presence."},
+  {co:"Kordamentha",v:"Financial Services",amt:19000,cur:"AUD",comp:"Upsell",vp:"Expanded analyst access via Microsoft Connector for rapid client reporting and competitive industry intelligence across the consulting team."},
+  {co:"BSP Financial",v:"Financial Services",amt:17000,cur:"AUD",comp:"New business",vp:"Won PNG's largest bank on unmatched South Pacific media coverage for brand monitoring and regional industry news tracking."},
+  {co:"Finder.com",v:"Financial Services",amt:16000,cur:"AUD",comp:"iSentia",vp:"Consolidated comms, growth and marketing teams with 360° media visibility and native Slack/API integrations after 15 years with iSentia."},
+  {co:"Nan Fung Group",v:"Financial Services",amt:15000,cur:"AUD",comp:"New business",vp:"Signed within 24 hours after demo surfaced critical fire incident content, proving the platform's real-time risk intelligence value."},
+  {co:"Maurice Blackburn Lawyers",v:"Legal",amt:86400,cur:"AUD",comp:"Streem",vp:"Replaced Streem with AI-powered Mira and GAIL, delivering superior social listening, cleaner analytics and faster media intelligence for the whole firm."},
+  {co:"Corrs Chambers Westgarth",v:"Legal",amt:33850,cur:"AUD",comp:"Streem",vp:"Won on superior UX, global monitoring, LinkedIn and Reddit social listening, and better media relations vs Streem's limited newsletter and social capability."},
+  {co:"Minter Ellison",v:"Legal",amt:30000,cur:"AUD",comp:"Streem",vp:"Expanded research team off Streem with unlimited searches and flexible ad-hoc monitoring, fully consolidating all firm teams on Meltwater."},
+  {co:"Australian Local Government Assoc",v:"Government & Associations",amt:40000,cur:"AUD",comp:"New business",vp:"Gave new comms director full media and broadcast visibility plus journalist database to quantify advocacy impact and lead policy conversations."},
+  {co:"SRM Group (India)",v:"Government & Associations",amt:31100,cur:"USD",comp:"New business",vp:"Delivered group-level governance and risk intelligence across 5 education campuses with news, social and LLM monitoring for a CXO-led mandate."},
+  {co:"Northern Grampians Shire Council",v:"Government & Associations",amt:20000,cur:"AUD",comp:"New business",vp:"Replaced manual Google Alerts with automated community sentiment monitoring and real-time alerts for renewables and essential services issues."},
+  {co:"Murray Regional Tourism Board",v:"Government & Associations",amt:19999,cur:"AUD",comp:"New business",vp:"Enabled tourism board to deliver individualised media dashboards across 13 Murray River councils to secure continued government funding."},
+  {co:"DPIRD WA",v:"Government & Associations",amt:18000,cur:"AUD",comp:"Existing provider",vp:"Switched WA government department to Meltwater with automated newsletters and a competitor matrix that helped the champion justify the procurement decision."},
+  {co:"Catholic Schools Parramatta Diocese",v:"Government & Associations",amt:16500,cur:"AUD",comp:"New business",vp:"Replaced manual media clipping with precise geographic content filtering and broadcast monitoring for proactive school crisis management."},
+  {co:"Queensland Trucking Association",v:"Government & Associations",amt:15000,cur:"AUD",comp:"New business",vp:"Shifted from reactive to proactive media monitoring to elevate industry advocacy voice and prove impact to sponsors and members."},
+  {co:"Motor Trade Association QLD",v:"Government & Associations",amt:15000,cur:"AUD",comp:"iSentia",vp:"Beat iSentia with social coverage, better regional monitoring and journalist database — closed by outpacing iSentia's notoriously slow response times."},
+  {co:"Western NSW Public Health Network",v:"Government & Associations",amt:14000,cur:"AUD",comp:"Streem",vp:"Replaced Streem with flexible ad-hoc search and superior broadcast monitoring for government health team managing regional communications."},
+  {co:"Centre for Invasive Species Solutions",v:"NFP & Charities",amt:27000,cur:"AUD",comp:"iSentia",vp:"Replaced iSentia with AI-powered monitoring enabling automated media wrap-ups, deep wildlife community social listening and major team efficiency gains."},
+  {co:"Meli",v:"NFP & Charities",amt:23000,cur:"AUD",comp:"New business",vp:"Automated manual media admin for Bellarine Peninsula NFP, freeing time for proactive content strategy and journalist outreach."},
+  {co:"Mental Health First Aid",v:"NFP & Charities",amt:20000,cur:"AUD",comp:"Streem + Sprout",vp:"Consolidated Streem and Sprout into a single platform with international coverage and unified reporting to better showcase advocacy wins."},
+  {co:"Breast Cancer Network Australia",v:"NFP & Charities",amt:15500,cur:"AUD",comp:"iSentia",vp:"Converted a staunch iSentia loyalist with superior broadcast transcription and an in-person demo that showcased the full platform capability."},
+  {co:"Dylan Alcott Foundation",v:"NFP & Charities",amt:12500,cur:"AUD",comp:"New business",vp:"Enabled foundation to quantify media value for corporate partners and track community sentiment ahead of major festival return."},
+  {co:"St Barts",v:"NFP & Charities",amt:9000,cur:"AUD",comp:"New business",vp:"Enabled Perth-based NFP to monitor media presence and research corporate partnership opportunities in one platform."},
+  {co:"AHURI",v:"NFP & Charities",amt:8050,cur:"AUD",comp:"Hootsuite",vp:"Replaced Hootsuite with consolidated owned and earned social reporting on a 3-year renewal with advanced social listening added."},
+  {co:"BBS Communications",v:"PR & Agencies",amt:80000,cur:"AUD",comp:"iSentia",vp:"Won back boomerang agency client from iSentia with superior ad-hoc search, own search term control and social listening iSentia had misrepresented."},
+  {co:"York Park Group",v:"PR & Agencies",amt:30200,cur:"AUD",comp:"Streem",vp:"Beat Streem with customisable dashboards and Mira Studio AI, positioning Meltwater as a digital media analyst within their consulting team."},
+  {co:"Say So NZ",v:"PR & Agencies",amt:15010,cur:"AUD",comp:"iSentia",vp:"Beat iSentia on competitive NZ print coverage plus superior social and platform capabilities for a fast-moving 4-person agency."},
+  {co:"Dec PR",v:"PR & Agencies",amt:14500,cur:"AUD",comp:"Upsell",vp:"Upsold GAIL Pro as clients increasingly demand LLM monitoring, making Meltwater the consolidated AI intelligence platform for the agency."},
+  {co:"Hyde & Seek",v:"PR & Agencies",amt:10000,cur:"AUD",comp:"New business",vp:"Helped lean agency eliminate manual media reporting with AI-powered monitoring, freeing hours that can be reinvested into winning new business."},
+  {co:"BMD Group",v:"Property & Construction",amt:90000,cur:"AUD",comp:"Streem",vp:"Replaced Streem — just 9 months after switching from iSentia — with Mira-powered workflows across aviation, rail, construction, energy and defence."},
+  {co:"Vicinity Centres",v:"Property & Construction",amt:65000,cur:"AUD",comp:"iSentia",vp:"Replaced iSentia with full social listening and AI-powered monitoring, giving the property company 360° media visibility their previous tool completely lacked."},
+  {co:"Aqualand",v:"Property & Construction",amt:35000,cur:"AUD",comp:"iSentia",vp:"Grew iSentia client spend by $7k with AI boolean assistant and social noise monitoring for construction project complaints and community sentiment."},
+  {co:"M+J Builders (NDA)",v:"Property & Construction",amt:22500,cur:"AUD",comp:"New business",vp:"Won non-traditional legal intelligence use case, deploying Meltwater as an evidence repository to archive media and social content for potential court proceedings."},
+  {co:"GO (Japan Taxi)",v:"Technology",amt:32000,cur:"AUD",comp:"Quid / Brandwatch / Talkwalker",vp:"Beat every major listening competitor to deliver continuous social monitoring of app user pain points and PR risk for Japan's leading ride-hailing platform."},
+  {co:"Tencent",v:"Technology",amt:30000,cur:"AUD",comp:"New business",vp:"Delivered AI-powered daily compliance intelligence on global news and policy for gaming team navigating AI and data privacy regulations."},
+  {co:"JisuLife",v:"Technology",amt:25000,cur:"AUD",comp:"Talkwalker / Brandwatch",vp:"Beat Talkwalker and Brandwatch with targeted social listening for marketing transformation and product feedback across China and global expansion markets."},
+  {co:"RØDE Microphones",v:"Technology",amt:22000,cur:"AUD",comp:"New business",vp:"Replaced expensive PR agencies with in-house Mira Studio monitoring for brand tracking, media release distribution and competitor benchmarking."},
+  {co:"Veracio",v:"Technology",amt:18000,cur:"AUD",comp:"New business",vp:"Signed within 24 hours by delivering consolidated global media visibility and QoQ ROI reporting to prove PR investment to leadership."},
+  {co:"Legrand",v:"Technology",amt:17500,cur:"AUD",comp:"New business",vp:"Enabled new Director of Communications to build PR strategy with journalist discovery, earned media tracking and competitive share of voice monitoring."},
+  {co:"Zoff (Japan)",v:"Retail & Consumer",amt:60000,cur:"AUD",comp:"New business",vp:"Delivered always-on competitive benchmarking and CX theme analysis for eyewear brand to systematically improve service quality against JINS and OWNDAYS."},
+  {co:"Human Made (Japan)",v:"Retail & Consumer",amt:20000,cur:"AUD",comp:"New business",vp:"Won CX team post-Tokyo Stock Exchange listing with brand mention monitoring to manage reseller complaints and customer experience issues at scale."},
+  {co:"Forty Winks",v:"Retail & Consumer",amt:12000,cur:"AUD",comp:"Upsell",vp:"Added Klear to enable luxury mattress retailer to discover HNI influencers and streamline campaign briefing via AI-powered landing pages."},
+  {co:"Wella",v:"Retail & Consumer",amt:12000,cur:"AUD",comp:"New business",vp:"Enabled beauty brand to rapidly monitor product safety allegations on social media through a trusted champion referral from a previous customer."},
+  {co:"Fuji Pharma",v:"Healthcare & Pharma",amt:48000,cur:"AUD",comp:"New business",vp:"Delivered integrated media monitoring, newsletter distribution and Dow Jones integration for pharma comms team across print, digital and social."},
+  {co:"Australian Physiotherapy Association",v:"Healthcare & Pharma",amt:10960,cur:"AUD",comp:"Brandwatch + Streem",vp:"Beat a Brandwatch and Streem bundle with Klear AI search for influencer marketing and advanced social listening in one consolidated platform."},
+  {co:"Specialist Protection Group (NDA)",v:"Other",amt:60000,cur:"AUD",comp:"New business",vp:"Built client-specific intelligence workflows with Microsoft Teams integration delivering real-time tailored media feeds per protected individual and asset."},
+  {co:"Melco Resorts",v:"Other",amt:34000,cur:"AUD",comp:"New business",vp:"Enabled casino and resort group comms team to monitor brand and risk globally using an AI teammate for real-time intelligence across operations."},
+  {co:"ANFF",v:"Other",amt:32100,cur:"AUD",comp:"New business",vp:"Aggregated 20 research institutions under one Meltwater license, enabling consolidated media intelligence across Australia's national research network."},
+  {co:"Omnes Videntes (NZ)",v:"Other",amt:30000,cur:"NZD",comp:"Streem",vp:"Beat Streem with superior social listening and flexible platform for NZ security firm running real-time threat intelligence across client business operations."},
+  {co:"Syngenta Australia",v:"Other",amt:21000,cur:"AUD",comp:"Streem",vp:"Replaced Streem's inflexible search management with user-controlled ad-hoc searching and a streamlined newsletter workflow for the agri communications team."},
+  {co:"XO Sports",v:"Other",amt:18000,cur:"AUD",comp:"Hypetap",vp:"Beat Hypetap with in-person consultative demo, positioning Klear as the only viable ad channel for pre-revenue sports brand restricted from paid social."},
+  {co:"Allume Energy",v:"Other",amt:10000,cur:"AUD",comp:"New business",vp:"Gave solar startup targeted journalist discovery and launch coverage reporting to prove PR impact and build media relations."},
+];
+
+const SL={'Financial Services':'Fin. services','Government & Associations':'Government','NFP & Charities':'NFP','Property & Construction':'Property','Healthcare & Pharma':'Healthcare','Retail & Consumer':'Retail','PR & Agencies':'PR & agencies','Legal':'Legal','Technology':'Technology','Other':'Other'};
+
+function sl(v){return SL[v]||v;}
+function bc(c){
+  if(c.includes('Streem')) return 'bs';
+  if(c==='iSentia') return 'bi';
+  if(c==='New business') return 'bn';
+  return 'bo';
+}
+function cur(d){return d.cur==='AUD'?'A$':d.cur==='NZD'?'NZ$':'US$';}
+
+function getF(){
+  const fv=document.getElementById('selV').value;
+  const fc=document.getElementById('selC').value;
+  return D.filter(d=>{
+    const vOk=fv==='All'||d.v===fv;
+    const cOk=fc==='All'||
+      (fc==='Streem'&&d.comp.includes('Streem'))||
+      (fc==='iSentia'&&d.comp==='iSentia')||
+      (fc==='New business'&&d.comp==='New business')||
+      (fc==='Other comp'&&!['Streem','Streem + Sprout','Brandwatch + Streem','iSentia','New business'].includes(d.comp));
+    return vOk&&cOk;
+  });
+}
+
+let ci;
+
+function go(){
+  const f=getF();
+
+  const iCnt=f.filter(d=>d.comp==='iSentia').length;
+  const sCnt=f.filter(d=>d.comp.includes('Streem')).length;
+
+  document.getElementById('stats').innerHTML=`
+    <div style="background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:1rem 1.25rem;">
+      <p style="font-size:12px;color:var(--color-text-secondary);margin:0 0 8px;text-transform:uppercase;letter-spacing:.04em;">Number of deals</p>
+      <p style="font-size:40px;font-weight:500;margin:0;line-height:1;">${f.length}</p>
+    </div>
+    <div style="background:var(--color-background-warning);border-radius:var(--border-radius-md);padding:1rem 1.25rem;">
+      <p style="font-size:12px;color:var(--color-text-warning);margin:0 0 8px;text-transform:uppercase;letter-spacing:.04em;">Won from iSentia</p>
+      <p style="font-size:40px;font-weight:500;margin:0;line-height:1;color:var(--color-text-warning);">${iCnt}</p>
+    </div>
+    <div style="background:var(--color-background-danger);border-radius:var(--border-radius-md);padding:1rem 1.25rem;">
+      <p style="font-size:12px;color:var(--color-text-danger);margin:0 0 8px;text-transform:uppercase;letter-spacing:.04em;">Won from Streem</p>
+      <p style="font-size:40px;font-weight:500;margin:0;line-height:1;color:var(--color-text-danger);">${sCnt}</p>
+    </div>`;
+
+  const vc={};
+  f.forEach(d=>{vc[d.v]=(vc[d.v]||0)+1;});
+  const srt=Object.entries(vc).sort((a,b)=>b[1]-a[1]);
+  ci.data.labels=srt.map(([v])=>sl(v));
+  ci.data.datasets[0].data=srt.map(([,c])=>c);
+  ci.update('active');
+
+  const cards=[...f].sort((a,b)=>b.amt-a.amt);
+  document.getElementById('cnt').textContent=cards.length+' deal'+(cards.length!==1?'s':'')+' — ordered by ACV';
+  if(!cards.length){
+    document.getElementById('grid').innerHTML='<p style="color:var(--color-text-secondary);font-size:14px;grid-column:1/-1;">No deals match this filter.</p>';
+    return;
+  }
+  document.getElementById('grid').innerHTML=cards.map(d=>`
+    <div class="dc">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:4px;">
+        <p style="font-size:14px;font-weight:500;margin:0;line-height:1.3;">${d.co}</p>
+        <span class="bd ${bc(d.comp)}">${d.comp}</span>
+      </div>
+      <p style="font-size:11px;color:var(--color-text-secondary);margin:0 0 10px;">${d.v}</p>
+      <p style="font-size:20px;font-weight:500;margin:0 0 10px;">${cur(d)}${d.amt.toLocaleString()}</p>
+      <p style="font-size:12px;color:var(--color-text-secondary);margin:0;line-height:1.6;">${d.vp}</p>
+    </div>`).join('');
+}
+
+const tc=getComputedStyle(document.documentElement).getPropertyValue('--color-text-secondary').trim()||'#888';
+
+ci=new Chart(document.getElementById('barchart'),{
+  type:'bar',
+  data:{labels:[],datasets:[{data:[],backgroundColor:'#185FA5',hoverBackgroundColor:'#0C447C',borderRadius:5,maxBarThickness:52}]},
+  options:{
+    responsive:true,maintainAspectRatio:false,
+    animation:{duration:250},
+    plugins:{
+      legend:{display:false},
+      tooltip:{
+        callbacks:{
+          label:ctx=>' '+ctx.raw+' deal'+(ctx.raw!==1?'s':''),
+          title:ctx=>ctx[0].label
+        }
+      }
+    },
+    scales:{
+      x:{ticks:{color:tc,font:{size:11},maxRotation:40,autoSkip:false},grid:{display:false},border:{display:false}},
+      y:{ticks:{color:tc,font:{size:11},stepSize:1,callback:v=>Number.isInteger(v)?v:''},grid:{color:'rgba(128,128,128,0.08)'},border:{display:false},beginAtZero:true}
+    }
+  }
+});
+
+go();
+</script>
